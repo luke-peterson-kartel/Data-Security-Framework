@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kartel AI — Client Data Flow</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'DM Sans',sans-serif;background:#FAFAF9;color:#18181B;padding:40px 28px;display:flex;justify-content:center;min-height:100vh}
+  .wrap{max-width:1140px;width:100%}
+
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;letter-spacing:2px;color:#A1A1AA;text-transform:uppercase;margin-bottom:4px}
+  h1{font-size:22px;font-weight:700;letter-spacing:-0.3px}
+  .sub{font-size:13px;color:#52525B;margin:4px 0 24px}
+
+  /* ── Grid ── */
+  .grid{display:grid;grid-template-columns:140px repeat(6,1fr);gap:0;border:1px solid #E4E4E7;border-radius:10px;overflow:hidden;background:white;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  .ph-corner{background:#18181B;padding:10px 14px;display:flex;align-items:center}
+  .ph-corner span{font-size:9px;color:#71717A;font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase}
+  .ph{background:#18181B;padding:10px 12px;text-align:center;border-left:1px solid #27272A}
+  .ph-num{font-family:'JetBrains Mono',monospace;font-size:9px;color:#52525B;font-weight:500;display:block;margin-bottom:1px}
+  .ph-name{font-size:11px;color:white;font-weight:700}
+
+  .row-label{padding:10px 14px;display:flex;align-items:center;gap:8px;border-top:1px solid #E4E4E7;background:#FAFAF9}
+  .rl-dot{width:8px;height:8px;border-radius:3px;flex-shrink:0}
+  .rl-dot.raw{background:#BFDBFE;border:1px solid #93C5FD}
+  .rl-dot.lora{background:#DDD6FE;border:1px solid #C4B5FD}
+  .rl-dot.gen{background:#FDE68A;border:1px solid #FCD34D}
+  .rl-dot.del{background:#BBF7D0;border:1px solid #86EFAC}
+  .rl-dot.perf{background:#FBCFE8;border:1px solid #F9A8D4}
+  .rl-text{font-size:10.5px;font-weight:700;line-height:1.2}
+
+  .cell{padding:8px 10px;border-top:1px solid #E4E4E7;border-left:1px solid #E4E4E7;display:flex;align-items:center;justify-content:center;text-align:center;min-height:62px}
+  .cell.empty{background:#FAFAF9}
+  .cell-inner{font-size:9.5px;line-height:1.45;color:#52525B}
+  .cell-inner strong{color:#18181B;font-weight:600}
+  .cell-inner .muted{color:#A1A1AA;font-size:9px}
+  .cell-inner .tag{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;letter-spacing:0.5px;display:inline-block;padding:1px 5px;border-radius:3px;margin-bottom:3px}
+
+  .cell.raw-a{background:#F8FBFF}
+  .cell.lora-a{background:#FAF8FF}
+  .cell.gen-a{background:#FFFDF5}
+  .cell.del-a{background:#F7FDF9}
+  .cell.perf-a{background:#FDF2F8}
+
+  .tag-raw{background:#DBEAFE;color:#1D4ED8}
+  .tag-lora{background:#EDE9FE;color:#6D28D9}
+  .tag-gen{background:#FEF3C7;color:#92400E}
+  .tag-del{background:#DCFCE7;color:#15803D}
+  .tag-perf{background:#FCE7F3;color:#BE185D}
+
+  /* ── Feedback loop ── */
+  .loop-bar{margin-top:20px;display:flex;align-items:center;gap:12px;padding:12px 16px;background:white;border:1.5px solid #F9A8D4;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  .loop-icon{font-size:18px;flex-shrink:0}
+  .loop-text{font-size:11px;color:#52525B;line-height:1.5}
+  .loop-text strong{color:#18181B}
+  .loop-arrow{display:flex;align-items:center;gap:4px;margin-left:auto;flex-shrink:0}
+  .loop-arrow-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:#BE185D;font-weight:600;letter-spacing:0.5px}
+
+  /* ── Security section ── */
+  .sec-section{margin-top:28px;padding-top:24px;border-top:1px solid #E4E4E7}
+  .sec-header{display:flex;align-items:baseline;gap:8px;margin-bottom:16px}
+  .sec-title{font-size:16px;font-weight:700}
+  .sec-sub{font-size:12px;color:#71717A}
+  .sec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .sec-card{background:white;border:1px solid #E4E4E7;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.03)}
+  .sec-card-head{background:#F4F4F5;padding:10px 14px;display:flex;align-items:baseline;gap:6px;border-bottom:1px solid #E4E4E7}
+  .sec-card-num{font-family:'JetBrains Mono',monospace;font-size:9px;color:#A1A1AA;font-weight:500}
+  .sec-card-name{font-size:11px;font-weight:700}
+  .sec-card-body{padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+
+  .sec-row{display:flex;flex-direction:column;gap:3px}
+  .sec-row-label{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#A1A1AA}
+  .sec-row-value{font-size:10px;color:#52525B;line-height:1.5}
+  .sec-row-value strong{color:#18181B;font-weight:600}
+
+  .vendor-list{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+  .vendor-tag{font-size:8.5px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;display:inline-flex;align-items:center;gap:3px}
+  .vendor-tag .v-check{font-size:8px}
+  .vt-green{background:#F0FDF4;border:1px solid #BBF7D0;color:#16A34A}
+  .vt-gray{background:#F4F4F5;border:1px solid #E4E4E7;color:#52525B}
+  .vt-amber{background:#FFFBEB;border:1px solid #FDE68A;color:#92400E}
+
+  .sec-badge-row{display:flex;flex-wrap:wrap;gap:3px;margin-top:2px}
+  .sb{font-size:8px;font-weight:600;color:#16A34A;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:3px;padding:2px 6px;white-space:nowrap}
+  .sb-amber{color:#92400E;background:#FFFBEB;border-color:#FDE68A}
+  .sb-red{color:#DC2626;background:#FEF2F2;border-color:#FECACA}
+
+  .sec-divider{height:1px;background:#F4F4F5;margin:2px 0}
+
+  /* ── Callout ── */
+  .callout{margin-top:20px;padding:10px 14px;border-radius:8px;font-size:11px;line-height:1.5;background:#FFFBEB;border:1px solid #FDE68A;color:#92400E}
+  .callout strong{font-weight:700}
+
+  .footer{margin-top:20px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:#D4D4D8}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Kartel AI — Data Security</div>
+  <h1>How Client Data Moves Through the Pipeline</h1>
+  <p class="sub">Five data types tracked across six pipeline phases — showing where each is created, present, and protected</p>
+
+  <!-- ══════════ MAIN GRID ══════════ -->
+  <div class="grid">
+    <div class="ph-corner"><span>Data Type</span></div>
+    <div class="ph"><span class="ph-num">01</span><span class="ph-name">Ingest</span></div>
+    <div class="ph"><span class="ph-num">02</span><span class="ph-name">Store</span></div>
+    <div class="ph"><span class="ph-num">03</span><span class="ph-name">Access</span></div>
+    <div class="ph"><span class="ph-num">04</span><span class="ph-name">Train</span></div>
+    <div class="ph"><span class="ph-num">05</span><span class="ph-name">Generate</span></div>
+    <div class="ph"><span class="ph-num">06</span><span class="ph-name">Deliver</span></div>
+
+    <!-- ROW 1: Raw Training Data -->
+    <div class="row-label"><div class="rl-dot raw"></div><div class="rl-text">Raw Training<br/>Data</div></div>
+    <div class="cell raw-a"><div class="cell-inner"><span class="tag tag-raw">ENTERS</span><br/>Client provides brand assets via S3, Drive, CIP, or hard drive</div></div>
+    <div class="cell raw-a"><div class="cell-inner">Internal NAS &amp; locked safe. <strong>Siloed per client</strong> — never commingled.</div></div>
+    <div class="cell raw-a"><div class="cell-inner">Authorized team downloads for training prep. <strong>Least privilege</strong> access.</div></div>
+    <div class="cell raw-a"><div class="cell-inner"><strong>Consumed</strong> by training process on local GPUs (or RunPod if approved)</div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">Not present —<br/>consumed in Train</span></div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">Destroyed per<br/>NIST 800-88</span></div></div>
+
+    <!-- ROW 2: LoRA Model -->
+    <div class="row-label"><div class="rl-dot lora"></div><div class="rl-text">LoRA Model</div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">—</span></div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">—</span></div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">—</span></div></div>
+    <div class="cell lora-a"><div class="cell-inner"><span class="tag tag-lora">CREATED</span><br/>Safetensor file — learned patterns. <strong>Cannot reconstruct source.</strong></div></div>
+    <div class="cell lora-a"><div class="cell-inner">Applied <strong>locally</strong> to base output. Brand DNA stays on Kartel infra.</div></div>
+    <div class="cell lora-a"><div class="cell-inner">Stored on Hugging Face (private, 2FA). <strong>Client-owned IP</strong> — portable.</div></div>
+
+    <!-- ROW 3: Generation Input -->
+    <div class="row-label"><div class="rl-dot gen"></div><div class="rl-text">Generation<br/>Input</div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">—</span></div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">—</span></div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">—</span></div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">—</span></div></div>
+    <div class="cell gen-a"><div class="cell-inner"><span class="tag tag-gen">SENT TO API</span><br/>Prompts &amp; params only. <strong>No client data, no brand assets, no PII.</strong></div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">Ephemeral —<br/>not retained</span></div></div>
+
+    <!-- ROW 4: Client Deliverables -->
+    <div class="row-label"><div class="rl-dot del"></div><div class="rl-text">Client<br/>Deliverables</div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">—</span></div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">—</span></div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">—</span></div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">—</span></div></div>
+    <div class="cell del-a"><div class="cell-inner"><span class="tag tag-del">CREATED</span><br/>Brand-accurate outputs. Full metadata audit trail.</div></div>
+    <div class="cell del-a"><div class="cell-inner">Sent to client via CIP, S3, Frame.io, or Drive. <strong>100% client-owned IP.</strong></div></div>
+
+    <!-- ROW 5: Performance Insights -->
+    <div class="row-label"><div class="rl-dot perf"></div><div class="rl-text">Performance<br/>Insights</div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">—</span></div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">—</span></div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">—</span></div></div>
+    <div class="cell empty"><div class="cell-inner"><span class="muted">—</span></div></div>
+    <div class="cell perf-a"><div class="cell-inner"><span class="tag tag-perf">INGESTED</span><br/>3rd-party performance data (e.g. VidMob) informs generation parameters</div></div>
+    <div class="cell perf-a"><div class="cell-inner"><span class="tag tag-perf">FEEDBACK</span><br/>Output performance data loops back to refine future generation</div></div>
+  </div>
+
+  <!-- Feedback loop -->
+  <div class="loop-bar">
+    <div class="loop-icon">🔄</div>
+    <div class="loop-text">
+      <strong>Performance Feedback Loop:</strong> Once the creative engine is live, distributed media performance data (from VidMob or similar 3rd-party vendors the brand works with) feeds into the generation step — enabling customized, insight-driven content. Output performance data from Deliver cycles back to Generate, creating a continuous optimization loop.
+    </div>
+    <div class="loop-arrow">
+      <svg width="80" height="32" viewBox="0 0 80 32"><path d="M70 4 L70 14 Q70 18 66 18 L14 18 Q10 18 10 22 L10 28" fill="none" stroke="#DB2777" stroke-width="1.5" stroke-dasharray="4 2"/><polygon points="6,26 10,32 14,26" fill="#DB2777"/><text x="40" y="12" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#BE185D" font-weight="600">06 → 05</text></svg>
+      <span class="loop-arrow-label">DELIVER → GENERATE</span>
+    </div>
+  </div>
+
+  <!-- ══════════ SECURITY SECTION ══════════ -->
+  <div class="sec-section">
+    <div class="sec-header">
+      <div class="sec-title">🔒 Security Controls &amp; Vendors by Phase</div>
+      <div class="sec-sub">Systems, vendors, compliance status, and protections at each stage</div>
+    </div>
+    <div class="sec-grid">
+
+      <!-- 01 INGEST -->
+      <div class="sec-card">
+        <div class="sec-card-head"><span class="sec-card-num">01</span><span class="sec-card-name">Ingest</span></div>
+        <div class="sec-card-body">
+          <div class="sec-row">
+            <div class="sec-row-label">Systems / Vendors</div>
+            <div class="vendor-list">
+              <span class="vendor-tag vt-green"><span class="v-check">✓</span> AWS S3 — SOC 2</span>
+              <span class="vendor-tag vt-green"><span class="v-check">✓</span> Google Drive</span>
+              <span class="vendor-tag vt-gray">CIP Platform</span>
+              <span class="vendor-tag vt-gray">Physical media</span>
+              <span class="vendor-tag vt-gray">SharePoint / Dropbox</span>
+            </div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Access Controls</div>
+            <div class="sec-row-value">2FA on all digital intake methods. Physical drives logged with chain-of-custody tracking. CIP uploads require authenticated client login.</div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Encryption</div>
+            <div class="sec-row-value">AES-256 at rest, TLS 1.3 in transit (S3). Google Drive encrypted by default. Physical drives stored in locked safe on arrival.</div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">RED CODE Protocol</div>
+            <div class="sec-badge-row">
+              <span class="sb sb-red">S3 or physical media only</span>
+              <span class="sb sb-red">No CIP / Drive / SharePoint</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 STORE -->
+      <div class="sec-card">
+        <div class="sec-card-head"><span class="sec-card-num">02</span><span class="sec-card-name">Store</span></div>
+        <div class="sec-card-body">
+          <div class="sec-row">
+            <div class="sec-row-label">Systems / Vendors</div>
+            <div class="vendor-list">
+              <span class="vendor-tag vt-gray">Internal NAS</span>
+              <span class="vendor-tag vt-gray">Locked safe (drives)</span>
+              <span class="vendor-tag vt-green"><span class="v-check">✓</span> CIP DAM — AWS</span>
+              <span class="vendor-tag vt-green"><span class="v-check">✓</span> AWS S3 (RED CODE)</span>
+            </div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Data Isolation</div>
+            <div class="sec-row-value"><strong>Siloed per client</strong> — separate NAS directories, separate S3 buckets. No data commingling across clients, ever.</div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Physical Security</div>
+            <div class="sec-row-value">407 Maple Drive, Beverly Hills. Keycard + biometric access. 24/7 video surveillance. Locked server cabinets. Visitor escort policy.</div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">RED CODE Protocol</div>
+            <div class="sec-badge-row">
+              <span class="sb sb-red">Air-gapped NAS — no internet</span>
+              <span class="sb sb-red">Network interfaces disabled</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 ACCESS -->
+      <div class="sec-card">
+        <div class="sec-card-head"><span class="sec-card-num">03</span><span class="sec-card-name">Access</span></div>
+        <div class="sec-card-body">
+          <div class="sec-row">
+            <div class="sec-row-label">Systems / Vendors</div>
+            <div class="vendor-list">
+              <span class="vendor-tag vt-gray">Internal NAS</span>
+              <span class="vendor-tag vt-gray">CIP Backend</span>
+              <span class="vendor-tag vt-green"><span class="v-check">✓</span> Google Workspace — 2FA</span>
+            </div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Personnel Controls</div>
+            <div class="sec-row-value"><strong>Least privilege:</strong> project-scoped access only. Background checks, NDA with non-compete + IP assignment. All access logged with timestamp, user ID, action type.</div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Contractor Vetting</div>
+            <div class="sec-row-value">W-9 verification → IPP profile review → NDA execution → Google Workspace + 2FA provisioning → project-scoped IPP access → activity monitoring → offboarding revocation</div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Monitoring</div>
+            <div class="sec-badge-row">
+              <span class="sb">All file access logged</span>
+              <span class="sb">Anomalous access alerts</span>
+              <span class="sb">Same standards: employees &amp; contractors</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 TRAIN -->
+      <div class="sec-card">
+        <div class="sec-card-head"><span class="sec-card-num">04</span><span class="sec-card-name">Train</span></div>
+        <div class="sec-card-body">
+          <div class="sec-row">
+            <div class="sec-row-label">Systems / Vendors</div>
+            <div class="vendor-list">
+              <span class="vendor-tag vt-gray">Local GPUs (primary)</span>
+              <span class="vendor-tag vt-green"><span class="v-check">✓</span> RunPod — SOC 2 Type II</span>
+              <span class="vendor-tag vt-green"><span class="v-check">✓</span> Hugging Face — SOC 2 (Enterprise Hub)</span>
+            </div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Two-Tier Model</div>
+            <div class="sec-row-value"><strong>Standard Secure:</strong> Local GPUs primary. RunPod SOC 2 overflow when approved by client. Data may transfer via S3 → RunPod. Instances ephemeral — wiped on termination.</div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Model Storage</div>
+            <div class="sec-row-value">Trained LoRA (safetensor) stored on Hugging Face private repo. 2FA + auth keys. Currently Pro plan; Enterprise Hub available for SOC 2 audit trails + SSO.</div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">RED CODE Protocol</div>
+            <div class="sec-badge-row">
+              <span class="sb sb-red">Local GPUs ONLY — zero cloud</span>
+              <span class="sb sb-red">Air-gapped — network disabled</span>
+              <span class="sb sb-red">Encrypted physical media transfer</span>
+              <span class="sb sb-red">Local-only model storage option</span>
+            </div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Contract</div>
+            <div class="sec-row-value">Client selects: <strong>Option A</strong> (Local-Only) or <strong>Option B</strong> (Secure Cloud Overflow Approved)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 GENERATE -->
+      <div class="sec-card">
+        <div class="sec-card-head"><span class="sec-card-num">05</span><span class="sec-card-name">Generate</span></div>
+        <div class="sec-card-body">
+          <div class="sec-row">
+            <div class="sec-row-label">Systems / Vendors</div>
+            <div class="vendor-list">
+              <span class="vendor-tag vt-gray">IPP / Generation Platform</span>
+              <span class="vendor-tag vt-green"><span class="v-check">✓</span> FAL — SOC 2 Type II</span>
+              <span class="vendor-tag vt-amber">3rd-party models (Runway, Kling, etc.)</span>
+              <span class="vendor-tag vt-amber">VidMob / 3rd-party insights</span>
+            </div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Critical Architecture</div>
+            <div class="sec-row-value"><strong>Client data does NOT pass through APIs.</strong> Prompts sent to 3rd-party models via FAL contain no brand assets, source data, or PII. Base result returned → LoRA model applied <strong>locally</strong> on Kartel infra.</div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Performance Data</div>
+            <div class="sec-row-value">3rd-party creative intelligence data (e.g. VidMob) ingested to inform generation parameters. <strong>Lower sensitivity</strong> — aggregated performance metrics, not core brand assets. Received via API or secure file transfer from brand's vendor.</div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Controls</div>
+            <div class="sec-badge-row">
+              <span class="sb">No client data to APIs</span>
+              <span class="sb">FAL: private API keys + encrypted comms</span>
+              <span class="sb">Full metadata audit trail</span>
+              <span class="sb">2FA gated IPP access</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 06 DELIVER -->
+      <div class="sec-card">
+        <div class="sec-card-head"><span class="sec-card-num">06</span><span class="sec-card-name">Deliver</span></div>
+        <div class="sec-card-body">
+          <div class="sec-row">
+            <div class="sec-row-label">Systems / Vendors</div>
+            <div class="vendor-list">
+              <span class="vendor-tag vt-green"><span class="v-check">✓</span> CIP Platform — AWS</span>
+              <span class="vendor-tag vt-green"><span class="v-check">✓</span> AWS S3</span>
+              <span class="vendor-tag vt-gray">Frame.io</span>
+              <span class="vendor-tag vt-gray">Google Drive</span>
+              <span class="vendor-tag vt-gray">WeTransfer / Figma</span>
+            </div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Delivery Controls</div>
+            <div class="sec-row-value">Client selects preferred delivery method. CIP recommended for built-in approval workflow and audit trail. All transfers encrypted. Client approval required before final release.</div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Performance Feedback</div>
+            <div class="sec-row-value">Once outputs are distributed, <strong>performance data loops back</strong> from the brand's media analytics vendor (VidMob, etc.) to the Generate phase — creating a continuous optimization cycle.</div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Data Destruction</div>
+            <div class="sec-badge-row">
+              <span class="sb">NIST 800-88 secure wipe</span>
+              <span class="sb">Written certification to client</span>
+              <span class="sb">LoRA model retained (client-owned)</span>
+            </div>
+          </div>
+          <div class="sec-divider"></div>
+          <div class="sec-row">
+            <div class="sec-row-label">Ownership</div>
+            <div class="sec-row-value"><strong>100% client-owned IP.</strong> Deliverables, LoRA models, and generated content are all client property.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <strong>⚠ Key takeaway:</strong> Raw client data transforms into a LoRA model at phase 04 — from that point forward, only the model (learned patterns, not source data) and its outputs exist. Third-party APIs only receive prompts — never client data, brand assets, or PII. Performance insights from 3rd-party vendors (e.g. VidMob) are a separate, lower-sensitivity data stream that creates a continuous feedback loop between Deliver and Generate.
+  </div>
+
+  <div class="footer">CONFIDENTIAL · KARTEL AI · DATA SECURITY FRAMEWORK · FEBRUARY 2026</div>
+</div>
+</body>
+</html>

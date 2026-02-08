@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kartel AI — Enterprise Data Security & Compliance Framework</title>
+    <meta name="description" content="Kartel AI Enterprise Data Security & Compliance Framework v3.0 — Client Data Lifecycle, Two-Tier Training Security Model, Third-Party Vendor Compliance Analysis." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+    <link rel="stylesheet" href="/src/framework.css" />
+  </head>
+  <body>
+
+    <!-- ═══════════ NAVIGATION ═══════════ -->
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <div class="nav-brand">
+          <a href="/" class="nav-brand-link">
+            <span class="nav-logo">K</span>
+            <span class="nav-name">KARTEL AI</span>
+          </a>
+        </div>
+        <div class="nav-links">
+          <a href="/" class="nav-link">Overview</a>
+          <a href="#platform-overview" class="nav-link" data-section="platform-overview">Platforms</a>
+          <a href="#training-security" class="nav-link" data-section="training-security">Training Model</a>
+          <a href="#data-types" class="nav-link" data-section="data-types">Data Types</a>
+          <a href="#data-lifecycle" class="nav-link" data-section="data-lifecycle">Lifecycle</a>
+          <a href="#vendor-compliance" class="nav-link" data-section="vendor-compliance">Vendors</a>
+          <a href="#compliance-posture" class="nav-link" data-section="compliance-posture">Compliance</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+
+      <!-- ═══════════ HERO ═══════════ -->
+      <section class="section hero" id="hero">
+        <div class="container">
+          <div class="hero-eyebrow">
+            <a href="/" class="back-link">&larr; Back to Overview</a>
+          </div>
+          <div class="hero-meta">
+            <span class="eyebrow-tag">DEEP DIVE FRAMEWORK</span>
+          </div>
+          <h1 class="hero-title">Enterprise Data Security &amp;<br/><span class="gradient-text">Compliance Framework</span></h1>
+          <p class="hero-subtitle">Client Data Lifecycle: Ingest to Delivery &middot; Two-Tier Training Security Model &middot; Third-Party Vendor Compliance Analysis &middot; Internal Platform Security Overview</p>
+          <div class="hero-meta-row">
+            <span class="meta-badge">Draft v3.0</span>
+            <span class="meta-badge">February 2026</span>
+            <span class="meta-badge meta-badge-red">CONFIDENTIAL</span>
+          </div>
+          <p class="hero-address">Kartel AI &middot; 407 Maple Drive, Beverly Hills, CA</p>
+        </div>
+      </section>
+
+      <!-- ═══════════ 1. PLATFORM OVERVIEW ═══════════ -->
+      <section class="section" id="platform-overview">
+        <div class="container">
+          <div class="section-header" data-animate>
+            <span class="section-eyebrow">SECTION 1</span>
+            <h2 class="section-title">Kartel Platform Overview</h2>
+            <p class="section-subtitle">Kartel operates two primary platforms that handle client data throughout the creative production lifecycle:</p>
+          </div>
+
+          <div class="card-grid card-grid-2" data-animate>
+            <div class="doc-card">
+              <div class="doc-card-header">
+                <span class="doc-card-badge badge-blue">CIP</span>
+                <span class="doc-card-title">Creative Intelligence Platform</span>
+              </div>
+              <div class="doc-card-body">
+                <div class="doc-field">
+                  <div class="doc-field-label">Type</div>
+                  <div class="doc-field-value">Client-facing and internal. Dashboard for asset intake, brief submission, deliverable review, and asset library. Clients interact exclusively through CIP Frontend.</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Security</div>
+                  <div class="doc-field-value">Independent client logins with authorized 2FA Google authentication. CIP does not store core client data unless explicitly authorized and submitted by the client. Clients are notified not to upload secure or RED CODE data through CIP, and should instead request a private S3 bucket for sensitive materials.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="doc-card">
+              <div class="doc-card-header">
+                <span class="doc-card-badge badge-purple">IPP</span>
+                <span class="doc-card-title">Internal Production Platform</span>
+              </div>
+              <div class="doc-card-body">
+                <div class="doc-field">
+                  <div class="doc-field-label">Type</div>
+                  <div class="doc-field-value">Internal only. Production hub for project management, milestone tracking, artist/generative engineer workspace, and deliverable submission. Houses the Generation Platform (GP) for AI content creation.</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Security</div>
+                  <div class="doc-field-value">Independent logins with authorized 2FA Google authentication. Access limited to Kartel employees and vetted contractors only. All user activity tracked and logged.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout-box" data-animate>
+            <strong>Key principle:</strong> Clients only see the CIP Frontend. All internal production, generation, and training activity occurs behind CIP on internal systems.
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ 2. TRAINING SECURITY MODEL ═══════════ -->
+      <section class="section" id="training-security">
+        <div class="container">
+          <div class="section-header" data-animate>
+            <span class="section-eyebrow">SECTION 2</span>
+            <h2 class="section-title">Training Security Model: Two-Tier Classification</h2>
+            <p class="section-subtitle">Kartel operates a two-tier training security model that provides appropriate protection based on data sensitivity. The tier is determined in consultation with the client during onboarding and formalized in the engagement contract.</p>
+          </div>
+
+          <div class="card-grid card-grid-2" data-animate>
+            <div class="doc-card">
+              <div class="doc-card-header">
+                <span class="doc-card-badge badge-green">STANDARD</span>
+                <span class="doc-card-title">Standard Secure Training</span>
+              </div>
+              <div class="doc-card-body">
+                <div class="doc-field">
+                  <div class="doc-field-label">When Used</div>
+                  <div class="doc-field-value">Default for most enterprise engagements. Client brand assets, product photography, creative materials.</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Training Location</div>
+                  <div class="doc-field-value">Local GPUs (primary). RunPod overflow GPUs when internal capacity is exceeded or dataset size requires additional compute.</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Cloud Exposure</div>
+                  <div class="doc-field-value">Source data may be uploaded to a secure S3 bucket and connected to RunPod for training. All SOC 2 compliant infrastructure. Client is notified and must approve.</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Model Storage</div>
+                  <div class="doc-field-value">Hugging Face private repository with 2FA and auth keys. Enterprise Hub available for SOC 2 audit trails and SSO.</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Contract Clause</div>
+                  <div class="doc-field-value"><strong>Option B:</strong> Secure Cloud Overflow Approved</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="doc-card doc-card-red">
+              <div class="doc-card-header">
+                <span class="doc-card-badge badge-red">RED CODE</span>
+                <span class="doc-card-title">Air-Gapped / RED CODE Training</span>
+              </div>
+              <div class="doc-card-body">
+                <div class="doc-field">
+                  <div class="doc-field-label">When Used</div>
+                  <div class="doc-field-value">Client-designated sensitive data. Recommended for: pre-production vehicles, unreleased products, embargoed campaigns, trade secrets.</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Training Location</div>
+                  <div class="doc-field-value">Local GPUs ONLY. Air-gapped infrastructure at Beverly Hills facility. Network interfaces physically disabled. No internet connectivity.</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Cloud Exposure</div>
+                  <div class="doc-field-value">ZERO cloud exposure. Source data never leaves the physical facility. Data transfer occurs only via encrypted physical media under chain-of-custody protocols.</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Model Storage</div>
+                  <div class="doc-field-value">Local storage only. Models remain on air-gapped infrastructure. Physical media transfer only under chain-of-custody.</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Contract Clause</div>
+                  <div class="doc-field-value"><strong>Option A:</strong> Local-Only / Air-Gapped Training</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout-box callout-red" data-animate>
+            <strong>RED CODE Classification:</strong> Data classified as RED CODE includes any material that the client designates as highly sensitive, including unreleased products, pre-production assets, embargoed campaigns, trade secrets, or any material where cloud exposure represents an unacceptable risk. RED CODE classification is determined during client onboarding and documented in the engagement contract.
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ 3. DATA TYPES ═══════════ -->
+      <section class="section" id="data-types">
+        <div class="container">
+          <div class="section-header" data-animate>
+            <span class="section-eyebrow">SECTION 3</span>
+            <h2 class="section-title">Data Types in the Kartel Pipeline</h2>
+            <p class="section-subtitle">Five distinct data types flow through the Kartel pipeline. Each has a different sensitivity profile, lifecycle, and security treatment:</p>
+          </div>
+
+          <div class="doc-table-wrapper" data-animate>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>Data Type</th>
+                  <th>What It Is</th>
+                  <th>Sensitivity</th>
+                  <th>Lifecycle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="inline-dot dot-raw"></span> <strong>Raw Training Data</strong></td>
+                  <td>Client brand assets, product photos, video, CAD files, creative materials</td>
+                  <td><span class="sensitivity-badge sensitivity-high">HIGH</span> Core proprietary client IP</td>
+                  <td>Enters at Ingest. Consumed in Train. Destroyed per NIST 800-88 at Deliver.</td>
+                </tr>
+                <tr>
+                  <td><span class="inline-dot dot-lora"></span> <strong>LoRA Model</strong></td>
+                  <td>Safetensor file containing learned visual patterns. Cannot reconstruct source data.</td>
+                  <td><span class="sensitivity-badge sensitivity-med">MEDIUM</span> Derived IP, client-owned</td>
+                  <td>Created at Train. Used in Generate. Stored for client at Deliver.</td>
+                </tr>
+                <tr>
+                  <td><span class="inline-dot dot-gen"></span> <strong>Generation Input</strong></td>
+                  <td>Prompts and parameters sent to third-party APIs via FAL</td>
+                  <td><span class="sensitivity-badge sensitivity-low">LOW</span> No client data, no brand assets, no PII</td>
+                  <td>Created at Generate. Ephemeral — not retained.</td>
+                </tr>
+                <tr>
+                  <td><span class="inline-dot dot-del"></span> <strong>Client Deliverables</strong></td>
+                  <td>Brand-accurate images, video, and creative assets produced by the engine</td>
+                  <td><span class="sensitivity-badge sensitivity-med">MEDIUM</span> Client-owned final output</td>
+                  <td>Created at Generate. Sent to client at Deliver.</td>
+                </tr>
+                <tr>
+                  <td><span class="inline-dot dot-perf"></span> <strong>Performance Insights</strong></td>
+                  <td>Aggregated creative performance data from third-party vendors (e.g. VidMob). Distributed media metrics that inform content strategy.</td>
+                  <td><span class="sensitivity-badge sensitivity-low">LOW</span> Aggregated metrics, not core brand assets. Supplied by brand's existing vendors.</td>
+                  <td>Ingested at Generate to inform parameters. Feedback from Deliver loops back to Generate.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ 4. CLIENT DATA LIFECYCLE ═══════════ -->
+      <section class="section" id="data-lifecycle">
+        <div class="container">
+          <div class="section-header" data-animate>
+            <span class="section-eyebrow">SECTION 4</span>
+            <h2 class="section-title">Client Data Lifecycle</h2>
+          </div>
+
+          <!-- 4.1 INGESTION -->
+          <div class="lifecycle-section" data-animate>
+            <h3 class="lifecycle-heading"><span class="lifecycle-num">1</span> Client Data Ingestion</h3>
+            <p class="lifecycle-intro">Client data enters the Kartel pipeline through multiple secure channels, determined by client preference and data sensitivity classification.</p>
+
+            <div class="doc-table-wrapper">
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Ingestion Method</th>
+                    <th>Description</th>
+                    <th>Security Controls</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>AWS S3 (Recommended)</strong></td>
+                    <td>Client uploads to a private S3 bucket provisioned by Kartel. Recommended for all HIGH sensitivity and RED CODE data.</td>
+                    <td>SOC 2 / ISO 27001 compliant; AES-256 at rest; TLS 1.3 in transit; 2FA; bucket-level access controls</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Physical Hard Drive</strong></td>
+                    <td>Client ships or hand-delivers encrypted drives to Beverly Hills office.</td>
+                    <td>Chain-of-custody tracking from receipt; stored in locked physical safe; drive contents cataloged on intake</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Google Drive</strong></td>
+                    <td>Client uploads to Kartel Google Drive or grants access to their own.</td>
+                    <td>2FA via Google Workspace; limited access permissions; client controls user access when sharing their own Drive</td>
+                  </tr>
+                  <tr>
+                    <td><strong>CIP Platform Upload</strong></td>
+                    <td>Client uploads directly through the CIP Frontend interface. Note: CIP displays a notification advising clients not to upload secure or RED CODE data. Clients requiring secure data transfer should request a private S3 bucket.</td>
+                    <td>2FA authentication; gated access; secured via AWS Media Services DAM infrastructure</td>
+                  </tr>
+                  <tr>
+                    <td><strong>SharePoint / Dropbox / Other</strong></td>
+                    <td>Client provides access via their preferred file sharing platform.</td>
+                    <td>Client-controlled access permissions; data downloaded locally upon receipt</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout-box">
+              Regardless of ingestion method, all client data is downloaded locally for processing. No client source data remains solely on third-party platforms during active engagement.
+            </div>
+          </div>
+
+          <!-- 4.2 STORAGE -->
+          <div class="lifecycle-section" data-animate>
+            <h3 class="lifecycle-heading"><span class="lifecycle-num">2</span> Client Data Storage</h3>
+            <p class="lifecycle-intro">Once ingested, client data is stored in a controlled environment with strict access limitations.</p>
+
+            <div class="doc-table-wrapper">
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Storage Location</th>
+                    <th>What Is Stored</th>
+                    <th>Security Measures</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Internal NAS (Primary)</strong></td>
+                    <td>All client source data (images, video, brand assets, product photography)</td>
+                    <td>Physically secured at Beverly Hills office; internal login only; access limited to assigned team members; fully protected network</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Locked Physical Safe</strong></td>
+                    <td>Hard drives received from clients</td>
+                    <td>Physical safe with restricted key holders; maintained at secure facility</td>
+                  </tr>
+                  <tr>
+                    <td><strong>AWS S3 (Intake/Delivery)</strong></td>
+                    <td>Intake bucket for S3-based transfers; private buckets for RED CODE data; delivery staging</td>
+                    <td>SOC 2 / ISO 27001 compliant; 2FA; encrypted at rest; data moved to local NAS after transfer</td>
+                  </tr>
+                  <tr>
+                    <td><strong>CIP Platform (DAM)</strong></td>
+                    <td>Organized client assets within the Creative Intelligence Platform. Non-sensitive materials only unless client explicitly authorizes.</td>
+                    <td>AWS Media Services infrastructure; 2FA; gated access; full access logging; notification that secure data should use S3</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4 class="doc-subheading">Core Storage Principles:</h4>
+            <ul class="doc-list">
+              <li><strong>Data Isolation:</strong> Each client's data is siloed in separate NAS directories and S3 buckets. Client data is never commingled.</li>
+              <li><strong>Air-Gap Option:</strong> RED CODE data stored on air-gapped NAS with network interfaces physically disabled.</li>
+              <li><strong>Physical Security:</strong> 407 Maple Drive, Beverly Hills. Keycard + biometric access; 24/7 surveillance; locked server cabinets; visitor escort policy.</li>
+            </ul>
+          </div>
+
+          <!-- 4.3 ACCESS -->
+          <div class="lifecycle-section" data-animate>
+            <h3 class="lifecycle-heading"><span class="lifecycle-num">3</span> Client Data Access &amp; Downloading</h3>
+            <p class="lifecycle-intro">Access to client data is tightly controlled with the principle of least privilege applied throughout.</p>
+
+            <div class="doc-table-wrapper">
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Control</th>
+                    <th>Implementation</th>
+                    <th>Monitoring</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Personnel Vetting</strong></td>
+                    <td>Background verification, NDA with non-compete and IP assignment, completed before project assignment</td>
+                    <td>HR records; annual re-verification</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Least Privilege Access</strong></td>
+                    <td>Only team members assigned to specific client account have access to that client's data</td>
+                    <td>Access grants reviewed per project</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Access Logging</strong></td>
+                    <td>All file access logged with timestamp, user ID, and action type on both CIP and IPP platforms</td>
+                    <td>Real-time alerting on anomalous access patterns</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Local Download Only</strong></td>
+                    <td>All data downloaded to internal NAS for training. No local copies on personal devices permitted.</td>
+                    <td>Network monitoring; DLP controls</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Physical Security</strong></td>
+                    <td>Keycard and biometric access; 24/7 surveillance; visitor logs; locked server cabinets</td>
+                    <td>Security camera retention; access logs</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4 class="doc-subheading">Contractor Vetting &amp; Onboarding Process</h4>
+            <p class="lifecycle-intro">All contractors with access to the IPP platform go through a structured onboarding and vetting process:</p>
+            <ul class="doc-list">
+              <li><strong>W-9 Verification:</strong> Identity and tax status confirmed</li>
+              <li><strong>IPP Profile Review:</strong> Portfolio and skills assessment</li>
+              <li><strong>NDA Execution:</strong> Non-disclosure with IP assignment clause</li>
+              <li><strong>Google Workspace Provisioning:</strong> 2FA-enforced account creation</li>
+              <li><strong>Project-Scoped IPP Access:</strong> Access limited to assigned projects only</li>
+              <li><strong>Activity Monitoring:</strong> All actions logged with same standards as employees</li>
+              <li><strong>Offboarding Revocation:</strong> Immediate access revocation upon project completion or termination</li>
+            </ul>
+          </div>
+
+          <!-- 4.4 TRAINING -->
+          <div class="lifecycle-section" data-animate>
+            <h3 class="lifecycle-heading"><span class="lifecycle-num">4</span> Custom Model Training</h3>
+            <p class="lifecycle-intro">Kartel trains custom LoRA (Low-Rank Adaptation) models on client data. These models learn stylistic and structural patterns but cannot reconstruct original source assets. The training environment is governed by the Two-Tier Classification outlined above.</p>
+
+            <h4 class="doc-subheading">Training Infrastructure</h4>
+            <div class="doc-table-wrapper">
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Environment</th>
+                    <th>Description</th>
+                    <th>Security</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Local GPUs (Primary)</strong></td>
+                    <td>On-premises GPU infrastructure at Beverly Hills office. Used for all RED CODE training and as primary for all standard training.</td>
+                    <td>Air-gapped option available; network interfaces physically disabled for RED CODE; no internet during sensitive training</td>
+                  </tr>
+                  <tr>
+                    <td><strong>RunPod (Overflow)</strong></td>
+                    <td>External GPU rental for overflow capacity when internal GPUs are at capacity or dataset size requires additional compute. NEVER used for RED CODE data.</td>
+                    <td>SOC 2 Type II certified; Kartel 2FA secured account; data transferred via secure S3 bucket connection; client notified and must approve before use</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4 class="doc-subheading">How RunPod Is Used (When Approved)</h4>
+            <ul class="doc-list">
+              <li>Internal GPU capacity reached or dataset requires more compute</li>
+              <li>Client notified and provides written approval for cloud overflow</li>
+              <li>Data transferred via encrypted S3 connection to RunPod instance</li>
+              <li>Training executed on ephemeral instance (wiped on termination)</li>
+              <li>Trained model (safetensor) extracted and stored on Hugging Face</li>
+              <li>RunPod instance terminated; no residual data</li>
+            </ul>
+
+            <h4 class="doc-subheading">Model Storage (Hugging Face)</h4>
+            <p class="lifecycle-intro">Trained models produce a safetensor file, which is stored on Hugging Face:</p>
+            <ul class="doc-list">
+              <li>Private repository with authentication keys and 2FA</li>
+              <li>Currently Pro plan; Enterprise Hub available for clients requiring SOC 2 audit trails and SSO</li>
+              <li>Organization-level access controls limit who can view or download models</li>
+              <li>RED CODE option: Local-only model storage, never uploaded to any cloud service</li>
+            </ul>
+
+            <div class="callout-box">
+              <strong>Key distinction:</strong> Trained models contain only learned parameters (stylistic patterns), not recoverable source imagery or data. The model cannot reconstruct original client assets. This is mathematically analogous to a human artist learning from reference: the knowledge is retained, not the source material.
+            </div>
+          </div>
+
+          <!-- 4.5 GENERATION -->
+          <div class="lifecycle-section" data-animate>
+            <h3 class="lifecycle-heading"><span class="lifecycle-num">5</span> Media Generation (IPP + FAL)</h3>
+            <p class="lifecycle-intro">Content generation occurs within the Internal Production Platform (IPP), which integrates third-party AI generation APIs through a secure intermediary.</p>
+
+            <div class="callout-box callout-blue">
+              <strong>Critical Architecture Detail: Client Data Isolation in Generation</strong><br/><br/>
+              Client data does NOT pass through third-party generation APIs. The custom LoRA model trained on client data contains the client's visual DNA. During generation, Kartel builds a custom workflow where prompts call the third-party API (e.g., Runway, Kling) to generate a base result, which is then processed through the client's LoRA model locally. The prompts sent to third-party APIs do not contain client data, brand assets, or proprietary content. All client-specific intelligence lives exclusively in the custom model, which remains on Kartel's infrastructure.
+            </div>
+
+            <div class="doc-table-wrapper">
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Component</th>
+                    <th>Function</th>
+                    <th>Security</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>IPP</strong></td>
+                    <td>Internal production platform where all client content creation and generations occur. Artists and generative engineers work here.</td>
+                    <td>2FA Google authentication; logged and gated access; Kartel employees and approved contractors only</td>
+                  </tr>
+                  <tr>
+                    <td><strong>FAL (API Gateway)</strong></td>
+                    <td>Enterprise-grade vendor providing API access to third-party generation models (Runway, Adobe Firefly, Kling, Wan, etc.). Client data is NOT sent through FAL. Only generation prompts and parameters are transmitted. Client-specific intelligence is applied via local LoRA model after API response.</td>
+                    <td>SOC 2 Type II compliant; private account with security authentication keys; all generations distributed directly into IPP; no client data exposure</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Generation Platform (GP)</strong></td>
+                    <td>AI content generation engine embedded within IPP. Executes workflows, accesses LoRA models, creates assets.</td>
+                    <td>Inherits IPP access controls; runs within IPP environment</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4 class="doc-subheading">Performance Insights in Generation</h4>
+            <p class="lifecycle-intro">In addition to the core generation inputs (prompts + LoRA model), the generation step can be informed by a fifth data type: Performance Insights — aggregated creative performance data from third-party vendors (e.g. VidMob) that the brand already works with. This data informs generation parameters, enabling insight-driven content creation. See Section 7 for full detail on this data type, its lifecycle, and the feedback loop.</p>
+
+            <h4 class="doc-subheading">Generation Workflow</h4>
+            <ol class="doc-list doc-list-ordered">
+              <li>Artist or generative engineer creates a generation brief in IPP</li>
+              <li>Generation Platform loads the client's trained LoRA model</li>
+              <li>Performance insights (if available) are applied as generation parameters (see Section 7)</li>
+              <li>Prompts and parameters sent to third-party model via FAL API</li>
+              <li>Base result returned to IPP</li>
+              <li>LoRA model applied locally to base output, producing brand-accurate result</li>
+              <li>Result enters review/approval workflow in IPP</li>
+            </ol>
+
+            <h4 class="doc-subheading">Generation Metadata &amp; Audit Trail</h4>
+            <p class="lifecycle-intro">Every generation created in the IPP captures comprehensive metadata:</p>
+            <ul class="doc-list">
+              <li>Timestamp, user ID, and project association</li>
+              <li>Prompt text and parameters used</li>
+              <li>Performance insight inputs applied (if any)</li>
+              <li>LoRA model version referenced</li>
+              <li>Third-party model and API endpoint used</li>
+              <li>Output file hash and storage location</li>
+            </ul>
+          </div>
+
+          <!-- 4.6 DELIVERY -->
+          <div class="lifecycle-section" data-animate>
+            <h3 class="lifecycle-heading"><span class="lifecycle-num">6</span> Asset Delivery &amp; Output to Client</h3>
+            <p class="lifecycle-intro">Deliverables are submitted to clients through their preferred method. All delivery channels maintain security and traceability.</p>
+
+            <div class="doc-table-wrapper">
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Delivery Method</th>
+                    <th>Description</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>CIP Platform (Recommended)</strong></td>
+                    <td>Client logs into CIP Frontend to review, approve, and download deliverables from their Asset Library</td>
+                    <td>Full audit trail of views, downloads, and approvals. Most comprehensive tracking.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>AWS S3 Delivery</strong></td>
+                    <td>Assets delivered to a secure S3 bucket for client pickup. Recommended for RED CODE deliverables.</td>
+                    <td>SOC 2 compliant; encrypted transfer</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Frame.io</strong></td>
+                    <td>Secure review and approval platform commonly used in media production</td>
+                    <td>Industry-standard for creative review</td>
+                  </tr>
+                  <tr>
+                    <td><strong>WeTransfer / Figma</strong></td>
+                    <td>Secure third-party transfer platforms based on client preference</td>
+                    <td>Encryption in transit; less comprehensive audit trail than CIP or S3</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Google Drive</strong></td>
+                    <td>Shared folder delivery to client Google Workspace</td>
+                    <td>2FA; access controls</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="lifecycle-intro">Delivery method is always determined by client preference. CIP Platform and AWS S3 provide the most comprehensive audit trails and are recommended for clients with elevated security requirements.</p>
+
+            <h4 class="doc-subheading">Performance Feedback Loop</h4>
+            <p class="lifecycle-intro">Once deliverables are distributed by the client, performance data begins flowing back from the brand's analytics vendors into the Generate phase, creating a continuous optimization loop. See Section 7 for full detail on the performance feedback cycle.</p>
+
+            <div class="callout-box">
+              <strong>Data destruction note:</strong> Raw training data is destroyed per NIST 800-88 with written certification to client. The LoRA model is retained on Hugging Face (or locally for RED CODE) as client-owned IP and remains portable. Performance insights are retained as operational data to support the ongoing feedback loop.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ 7. PERFORMANCE INSIGHTS ═══════════ -->
+      <section class="section" id="performance-insights">
+        <div class="container">
+          <div class="section-header" data-animate>
+            <span class="section-eyebrow">SECTION 7</span>
+            <h2 class="section-title">Performance Insights &amp; Feedback Loop</h2>
+            <p class="section-subtitle">Performance Insights represent a fifth data type in the Kartel pipeline — distinct from the core creative asset lifecycle (Sections 1–6). This section covers what performance insights are, how they enter the pipeline, and how they create a continuous optimization loop that makes the creative engine adaptive.</p>
+          </div>
+
+          <div class="lifecycle-section" data-animate>
+            <h4 class="doc-subheading">What Are Performance Insights?</h4>
+            <p class="lifecycle-intro">Performance Insights are aggregated creative performance metrics sourced from third-party vendors that the brand already works with. The primary example is VidMob, a creative intelligence platform that provides data on how distributed media (ads, social content, video) performs across channels. This data tells the generation engine what works for a specific brand's audience, enabling customized, insight-driven content creation.</p>
+
+            <p class="lifecycle-intro">Examples of performance insight data include:</p>
+            <ul class="doc-list">
+              <li>Creative effectiveness scores by visual style, format, or messaging approach</li>
+              <li>Engagement metrics by audience segment and channel</li>
+              <li>A/B test results on creative variations</li>
+              <li>Platform-specific performance benchmarks (Instagram, TikTok, YouTube, etc.)</li>
+              <li>Trend data on emerging visual styles or content formats</li>
+            </ul>
+          </div>
+
+          <div class="lifecycle-section" data-animate>
+            <h4 class="doc-subheading">Data Classification</h4>
+            <div class="doc-table-wrapper">
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Attribute</th>
+                    <th>Performance Insights</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Sensitivity Level</strong></td>
+                    <td><span class="sensitivity-badge sensitivity-low">LOW</span> Aggregated performance metrics — not core brand assets, source imagery, or PII. Fundamentally different data class from raw training data.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Source</strong></td>
+                    <td>Third-party analytics vendors the brand already works with (e.g. VidMob, Meta Ads Manager, Google Analytics). Kartel does not collect this data independently.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Contains Client Data?</strong></td>
+                    <td>No core brand assets, no PII, no proprietary creative materials. Contains aggregated metrics about how creative content performs in market.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Retention</strong></td>
+                    <td>Retained as operational data to support the ongoing feedback loop. Not subject to NIST 800-88 destruction (not source data).</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="lifecycle-section" data-animate>
+            <h4 class="doc-subheading">How Performance Insights Enter the Pipeline</h4>
+            <div class="doc-table-wrapper">
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Stage</th>
+                    <th>What Happens</th>
+                    <th>Security</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Initial Ingestion (New Client)</strong></td>
+                    <td>When a new client's creative intelligence engine is first built, historical performance data from the brand's analytics vendor (e.g. VidMob) is ingested into the generation step. This data informs initial generation parameters — what visual styles, formats, and messaging approaches perform best for this brand.</td>
+                    <td>Lower sensitivity: aggregated performance metrics, not core brand assets or PII. Received via API integration or secure file transfer from the brand's vendor.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ongoing Feedback Loop</strong></td>
+                    <td>Once the creative engine is live and deliverables are being distributed, the brand's media performance data flows back from the Deliver phase to the Generate phase. This creates a continuous optimization cycle: outputs perform &rarr; performance data captured &rarr; insights fed back &rarr; next generation refined.</td>
+                    <td>Same low-sensitivity classification. Performance data is aggregated — it does not contain source creative assets. Feedback loop is logged and auditable.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="lifecycle-section" data-animate>
+            <h4 class="doc-subheading">The Feedback Loop: Deliver &rarr; Generate</h4>
+            <p class="lifecycle-intro">The performance feedback loop is what makes the creative engine adaptive, not just generative. It works as follows:</p>
+            <ol class="doc-list doc-list-ordered">
+              <li><strong>Generate:</strong> Creative content is produced using the trained LoRA model + performance insight parameters</li>
+              <li><strong>Deliver:</strong> Approved assets are sent to the client and distributed across media channels</li>
+              <li><strong>Perform:</strong> Content runs in market across platforms (Instagram, TikTok, YouTube, programmatic, etc.)</li>
+              <li><strong>Measure:</strong> Brand's analytics vendor (VidMob, etc.) captures creative performance data</li>
+              <li><strong>Feed Back:</strong> Performance data is ingested back into the Generate phase as updated insight parameters</li>
+              <li><strong>Refine:</strong> Next generation cycle uses updated insights to produce better-performing content</li>
+            </ol>
+            <p class="lifecycle-intro">This cycle repeats continuously, with each round of content creating data that improves the next.</p>
+          </div>
+
+          <div class="lifecycle-section" data-animate>
+            <h4 class="doc-subheading">Key Principles</h4>
+            <ul class="doc-list">
+              <li><strong>Not core client data:</strong> Performance insights are aggregated media metrics (click rates, engagement scores, creative effectiveness data) — not brand assets, source imagery, or PII. They represent a fundamentally different and lower-sensitivity data class.</li>
+              <li><strong>Sourced from brand's existing vendors:</strong> This data comes from third-party analytics platforms the brand already uses (e.g. VidMob, Meta Ads Manager data). Kartel does not collect this data independently.</li>
+              <li><strong>Actionable in generation:</strong> Once the brand's creative intelligence engine is built (LoRA model trained), performance insights become parameters that guide what to generate — enabling hyper-targeted content that reflects real audience behavior.</li>
+              <li><strong>Creates competitive advantage:</strong> The Deliver &rarr; Generate feedback cycle is what differentiates Kartel's creative engine from static AI generation tools. Each content cycle produces data that makes the engine smarter.</li>
+            </ul>
+          </div>
+
+          <div class="lifecycle-section" data-animate>
+            <h4 class="doc-subheading">Worked Example</h4>
+            <div class="callout-box callout-purple">
+              A CPG brand works with VidMob for creative intelligence. VidMob's performance data shows that product-in-hand shots with warm lighting outperform flat-lay photography by 2.3x on Instagram for this brand's audience. This insight is fed into the generation parameters, and the creative engine prioritizes that visual style for the next campaign batch. After the campaign runs, new performance data shows that the warm-lighting approach works even better when combined with close-crop framing. This updated insight is fed back, and the next generation cycle incorporates both parameters.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ VENDOR COMPLIANCE ═══════════ -->
+      <section class="section" id="vendor-compliance">
+        <div class="container">
+          <div class="section-header" data-animate>
+            <span class="section-eyebrow">VENDOR ANALYSIS</span>
+            <h2 class="section-title">Third-Party Vendor Compliance Analysis</h2>
+            <p class="section-subtitle">The following analysis covers the SOC 2 compliance status and security posture of each third-party vendor in the Kartel data pipeline. Compliance documentation links are provided for each vendor.</p>
+          </div>
+
+          <div class="card-grid card-grid-1" data-animate>
+
+            <!-- AWS -->
+            <div class="doc-card">
+              <div class="doc-card-header">
+                <span class="doc-card-badge badge-green">1</span>
+                <span class="doc-card-title">AWS (S3, Media Services, DAM Infrastructure)</span>
+              </div>
+              <div class="doc-card-body">
+                <div class="doc-field">
+                  <div class="doc-field-label">SOC 2 Compliance</div>
+                  <div class="doc-field-value"><span class="inline-check">&#10003;</span> YES - SOC 2 Type II certified</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Additional Certifications</div>
+                  <div class="doc-field-value">ISO 27001, ISO 27017, ISO 27018, FedRAMP, HIPAA eligible, PCI DSS Level 1</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Kartel Usage</div>
+                  <div class="doc-field-value">CIP platform infrastructure (Media Services, DAM), S3 buckets for data ingestion and delivery, production inference environment</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Key Security Features</div>
+                  <div class="doc-field-value">AES-256 encryption at rest, TLS encryption in transit, IAM access controls, CloudTrail audit logging, VPC isolation</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Risk Level</div>
+                  <div class="doc-field-value"><span class="sensitivity-badge sensitivity-low">LOW</span> Gold standard for enterprise cloud infrastructure</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RunPod -->
+            <div class="doc-card">
+              <div class="doc-card-header">
+                <span class="doc-card-badge badge-amber">2</span>
+                <span class="doc-card-title">RunPod (External GPU Training - Standard Tier Only)</span>
+              </div>
+              <div class="doc-card-body">
+                <div class="doc-field">
+                  <div class="doc-field-label">SOC 2 Compliance</div>
+                  <div class="doc-field-value"><span class="inline-check">&#10003;</span> YES - SOC 2 Type II certified (achieved 2024)</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Additional Certifications</div>
+                  <div class="doc-field-value">GDPR compliant; pursuing additional certifications</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Kartel Usage</div>
+                  <div class="doc-field-value">Overflow GPU capacity for Standard Secure Training only. NEVER used for RED CODE / air-gapped data. Client must approve before use.</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Key Security Features</div>
+                  <div class="doc-field-value">Encrypted storage, private networking, secure API access, ephemeral instances (data wiped on termination)</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Risk Level</div>
+                  <div class="doc-field-value"><span class="sensitivity-badge sensitivity-med">MEDIUM</span> SOC 2 certified; requires client disclosure and written approval; never used for RED CODE</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- FAL -->
+            <div class="doc-card">
+              <div class="doc-card-header">
+                <span class="doc-card-badge badge-green">3</span>
+                <span class="doc-card-title">FAL (AI API Gateway)</span>
+              </div>
+              <div class="doc-card-body">
+                <div class="doc-field">
+                  <div class="doc-field-label">SOC 2 Compliance</div>
+                  <div class="doc-field-value"><span class="inline-check">&#10003;</span> YES - SOC 2 Type II certified</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Additional Certifications</div>
+                  <div class="doc-field-value">GDPR compliant; enterprise-grade SLAs available</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Kartel Usage</div>
+                  <div class="doc-field-value">API gateway for accessing third-party generation models (Runway, Adobe Firefly, Kling, Wan, etc.). Client data is NOT sent through FAL. Only generation prompts and parameters are transmitted.</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Key Security Features</div>
+                  <div class="doc-field-value">Private API keys, secure authentication, encrypted communications, no client data in transmission</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Risk Level</div>
+                  <div class="doc-field-value"><span class="sensitivity-badge sensitivity-low">LOW</span> SOC 2 certified; no client data exposure; prompts only</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hugging Face -->
+            <div class="doc-card">
+              <div class="doc-card-header">
+                <span class="doc-card-badge badge-green">4</span>
+                <span class="doc-card-title">Hugging Face (Model Repository)</span>
+              </div>
+              <div class="doc-card-body">
+                <div class="doc-field">
+                  <div class="doc-field-label">SOC 2 Compliance</div>
+                  <div class="doc-field-value"><span class="inline-check">&#10003;</span> YES - SOC 2 Type II certified (Enterprise Hub)</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Additional Certifications</div>
+                  <div class="doc-field-value">GDPR compliant; Enterprise Hub offers additional security controls, VPC options, and audit logs</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Kartel Usage</div>
+                  <div class="doc-field-value">Storage of trained custom LoRA models (safetensor files) in private repositories with authentication keys. Currently on Pro plan; Enterprise Hub available for clients requiring SOC 2 audit trails and SSO.</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Key Security Features</div>
+                  <div class="doc-field-value">Private repos, access tokens, 2FA, organization-level access controls. Enterprise Hub adds SSO, audit trails, and VPC.</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Risk Level</div>
+                  <div class="doc-field-value"><span class="sensitivity-badge sensitivity-low">LOW</span> Industry standard; models contain only learned parameters; Enterprise Hub upgrade available</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- VidMob -->
+            <div class="doc-card">
+              <div class="doc-card-header">
+                <span class="doc-card-badge badge-green">5</span>
+                <span class="doc-card-title">VidMob (Creative Intelligence / Performance Data)</span>
+              </div>
+              <div class="doc-card-body">
+                <div class="doc-field">
+                  <div class="doc-field-label">SOC 2 Compliance</div>
+                  <div class="doc-field-value"><span class="inline-check">&#10003;</span> YES - SOC 2 Type II certified</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Additional Certifications</div>
+                  <div class="doc-field-value">GDPR compliant; enterprise-grade security; works with Fortune 500 brands</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Kartel Usage</div>
+                  <div class="doc-field-value">Source of creative intelligence performance data that informs the generation engine. VidMob is the brand's existing vendor — Kartel integrates with VidMob's data output to create insight-driven content. Performance data only; no brand source assets flow through VidMob to Kartel.</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Key Security Features</div>
+                  <div class="doc-field-value">Enterprise API access, aggregated performance metrics only, no PII or brand source assets in data transfer</div>
+                </div>
+                <div class="doc-field">
+                  <div class="doc-field-label">Risk Level</div>
+                  <div class="doc-field-value"><span class="sensitivity-badge sensitivity-low">LOW</span> Aggregated performance metrics only; no core client data exposure; brand's existing vendor relationship</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vendor Summary Table -->
+          <div class="lifecycle-section" data-animate>
+            <h4 class="doc-subheading">Vendor Compliance Summary</h4>
+            <div class="doc-table-wrapper">
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Vendor</th>
+                    <th>SOC 2</th>
+                    <th>GDPR</th>
+                    <th>Risk</th>
+                    <th>Data Exposed</th>
+                    <th>Client Data?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>AWS</strong></td>
+                    <td><span class="inline-check">&#10003;</span> Type II</td>
+                    <td><span class="inline-check">&#10003;</span> Yes</td>
+                    <td><span class="sensitivity-badge sensitivity-low">Low</span></td>
+                    <td>Infra, S3</td>
+                    <td>Yes (encrypted)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>RunPod</strong></td>
+                    <td><span class="inline-check">&#10003;</span> Type II</td>
+                    <td><span class="inline-check">&#10003;</span> Yes</td>
+                    <td><span class="sensitivity-badge sensitivity-med">Medium</span></td>
+                    <td>Training data</td>
+                    <td>Yes, Standard only</td>
+                  </tr>
+                  <tr>
+                    <td><strong>FAL</strong></td>
+                    <td><span class="inline-check">&#10003;</span> Type II</td>
+                    <td><span class="inline-check">&#10003;</span> Yes</td>
+                    <td><span class="sensitivity-badge sensitivity-low">Low</span></td>
+                    <td>Prompts only</td>
+                    <td>No client data</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hugging Face</strong></td>
+                    <td><span class="inline-check">&#10003;</span> Type II</td>
+                    <td><span class="inline-check">&#10003;</span> Yes</td>
+                    <td><span class="sensitivity-badge sensitivity-low">Low</span></td>
+                    <td>Models only</td>
+                    <td>No (learned params)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>VidMob</strong></td>
+                    <td><span class="inline-check">&#10003;</span> Type II</td>
+                    <td><span class="inline-check">&#10003;</span> Yes</td>
+                    <td><span class="sensitivity-badge sensitivity-low">Low</span></td>
+                    <td>Perf. metrics</td>
+                    <td>No (aggregated data)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ END-TO-END DATA FLOW ═══════════ -->
+      <section class="section" id="data-flow-summary">
+        <div class="container">
+          <div class="section-header" data-animate>
+            <span class="section-eyebrow">SUMMARY</span>
+            <h2 class="section-title">End-to-End Data Flow Summary</h2>
+            <p class="section-subtitle">The following outlines the complete data journey from client to deliverable, including the performance feedback loop.</p>
+          </div>
+
+          <div class="doc-table-wrapper" data-animate>
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Phase</th>
+                  <th>Action</th>
+                  <th>Systems</th>
+                  <th>Data Types Active</th>
+                  <th>Security Layer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><strong>Ingest</strong></td>
+                  <td>Client provides brand assets, product data, creative materials</td>
+                  <td>S3 / Google Drive / CIP / Hard Drive / SharePoint</td>
+                  <td>Raw Training Data</td>
+                  <td>2FA, chain-of-custody, encrypted transfer. RED CODE via S3 or physical.</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td><strong>Store</strong></td>
+                  <td>Data organized and stored on internal infrastructure</td>
+                  <td>Internal NAS, CIP DAM, AWS S3</td>
+                  <td>Raw Training Data</td>
+                  <td>Air-gapped option, physical security, access logs, data isolation</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td><strong>Access</strong></td>
+                  <td>Authorized team downloads data for training preparation</td>
+                  <td>Internal NAS, CIP Backend, Google Workspace</td>
+                  <td>Raw Training Data</td>
+                  <td>Least privilege, personnel vetting, DLP, contractor vetting</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td><strong>Train</strong></td>
+                  <td>Custom LoRA models trained; safetensor files stored</td>
+                  <td>Local GPUs / RunPod (if approved); Hugging Face</td>
+                  <td>Raw Training Data &rarr; LoRA Model created</td>
+                  <td>Two-tier model: air-gapped (RED CODE) or SOC 2 cloud (Standard)</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td><strong>Generate</strong></td>
+                  <td>Content created using trained models + third-party APIs + performance insights. Client data stays in LoRA model, not in API calls.</td>
+                  <td>IPP, Generation Platform, FAL APIs, VidMob (insights)</td>
+                  <td>LoRA Model, Generation Input, Deliverables created, Performance Insights</td>
+                  <td>2FA, gated access, full metadata logging, no client data to APIs, performance data logged</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td><strong>Deliver</strong></td>
+                  <td>Approved assets sent to client via preferred method. Performance data loops back to Generate.</td>
+                  <td>CIP Frontend, S3, Frame.io, Google Drive</td>
+                  <td>LoRA Model (stored), Deliverables sent, Performance Feedback</td>
+                  <td>Encrypted transfer, audit trail, client approval flow, NIST 800-88 destruction</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ COMPLIANCE POSTURE ═══════════ -->
+      <section class="section" id="compliance-posture">
+        <div class="container">
+          <div class="section-header" data-animate>
+            <span class="section-eyebrow">COMPLIANCE</span>
+            <h2 class="section-title">Kartel Compliance Posture</h2>
+            <p class="section-subtitle">The following outlines Kartel's current compliance status and roadmap, distinguishing between vendor-level and Kartel organizational-level certifications.</p>
+          </div>
+
+          <div class="lifecycle-section" data-animate>
+            <h4 class="doc-subheading">Vendor-Level Compliance (Current)</h4>
+            <p class="lifecycle-intro">All third-party vendors in the Kartel data pipeline maintain SOC 2 Type II certification: AWS, RunPod, FAL, Hugging Face, and VidMob.</p>
+          </div>
+
+          <div class="lifecycle-section" data-animate>
+            <h4 class="doc-subheading">Kartel Organizational Compliance</h4>
+            <div class="doc-table-wrapper">
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>Framework</th>
+                    <th>Status &amp; Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>AWS SOC 2 (Production Infra)</strong></td>
+                    <td><span class="inline-check">&#10003;</span> <strong>Active</strong> — Production infrastructure runs on AWS SOC 2 / ISO 27001 compliant services</td>
+                  </tr>
+                  <tr>
+                    <td><strong>NIST 800-88 (Data Destruction)</strong></td>
+                    <td><span class="inline-check">&#10003;</span> <strong>Active</strong> — Data destruction protocols with written client certification</td>
+                  </tr>
+                  <tr>
+                    <td><strong>GDPR</strong></td>
+                    <td><span class="inline-check">&#10003;</span> <strong>Active</strong> — Compliant processes in place</td>
+                  </tr>
+                  <tr>
+                    <td><strong>CCPA</strong></td>
+                    <td><span class="inline-check">&#10003;</span> <strong>Active</strong> — Compliant processes in place</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Kartel SOC 2 (Organizational)</strong></td>
+                    <td><span class="inline-pending">&#9203;</span> <strong>2026 Roadmap</strong> — Being assessed and pursued as part of Platform WhyGO #3. Timeline driven by enterprise client requirements.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="lifecycle-section" data-animate>
+            <h4 class="doc-subheading">Platform Security Controls (CIP &amp; IPP)</h4>
+            <p class="lifecycle-intro">While Kartel pursues organizational SOC 2 certification, both internal platforms maintain enterprise-grade security controls:</p>
+            <ul class="doc-list">
+              <li>2FA Google Authentication on all user accounts (CIP and IPP)</li>
+              <li>Independent login systems for clients (CIP) and internal team (IPP)</li>
+              <li>Full activity logging on both platforms</li>
+              <li>Role-based access control with project-scoped permissions</li>
+              <li>Encrypted data transfer for all platform communications</li>
+              <li>CIP notification system warning clients not to upload RED CODE data</li>
+            </ul>
+
+            <div class="callout-box">
+              <strong>Kartel's position:</strong> The combination of SOC 2-certified vendor infrastructure, internal security controls (2FA, access logging, data isolation, physical security), and the two-tier training model provides enterprise-grade protection for client data. Organizational SOC 2 certification is being pursued on a timeline driven by client requirements.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-brand">KARTEL AI</div>
+        <div class="footer-notice">CONFIDENTIAL &middot; ENTERPRISE DATA SECURITY &amp; COMPLIANCE FRAMEWORK &middot; DRAFT v3.0 &middot; FEBRUARY 2026</div>
+        <div class="footer-sub">This document is proprietary. Unauthorized distribution is prohibited.</div>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/framework.ts"></script>
+  </body>
+</html>
