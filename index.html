@@ -150,10 +150,10 @@
 
               <!-- Row 1: Raw Training Data -->
               <div class="grid-label"><span class="label-dot dot-raw"></span><span class="label-text">Raw Training<br/>Data</span></div>
-              <div class="grid-cell cell-raw active-cell"><span class="cell-tag tag-raw">ENTERS</span><span class="cell-text">Client provides brand assets via S3, Drive, CIP, or hard drive</span></div>
-              <div class="grid-cell cell-raw active-cell"><span class="cell-text">Internal NAS &amp; locked safe. <strong>Siloed per client</strong> — never commingled.</span></div>
-              <div class="grid-cell cell-raw active-cell"><span class="cell-text">Authorized team downloads for training prep. <strong>Least privilege</strong> access.</span></div>
-              <div class="grid-cell cell-raw active-cell"><span class="cell-text"><strong>Consumed</strong> by training process on local GPUs (or RunPod if approved)</span></div>
+              <div class="grid-cell cell-raw active-cell" data-modal="raw-ingest"><span class="cell-tag tag-raw">ENTERS</span><span class="cell-text">Client provides brand assets via S3, Drive, CIP, or hard drive</span><span class="cell-expand">+</span></div>
+              <div class="grid-cell cell-raw active-cell" data-modal="raw-store"><span class="cell-text">Internal NAS &amp; locked safe. <strong>Siloed per client</strong> — never commingled.</span><span class="cell-expand">+</span></div>
+              <div class="grid-cell cell-raw active-cell" data-modal="raw-access"><span class="cell-text">Authorized team downloads for training prep. <strong>Least privilege</strong> access.</span><span class="cell-expand">+</span></div>
+              <div class="grid-cell cell-raw active-cell" data-modal="raw-train"><span class="cell-text"><strong>Consumed</strong> by training process on local GPUs (or RunPod if approved)</span><span class="cell-expand">+</span></div>
               <div class="grid-cell cell-empty"><span class="cell-muted">Not present — consumed in Train</span></div>
               <div class="grid-cell cell-empty"><span class="cell-muted">Destroyed per NIST 800-88</span></div>
 
@@ -162,9 +162,9 @@
               <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
               <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
               <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
-              <div class="grid-cell cell-lora active-cell"><span class="cell-tag tag-lora">CREATED</span><span class="cell-text">Safetensor file — learned patterns. <strong>Cannot reconstruct source.</strong></span></div>
-              <div class="grid-cell cell-lora active-cell"><span class="cell-text">Applied <strong>locally</strong> to base output. Brand DNA stays on Kartel infra.</span></div>
-              <div class="grid-cell cell-lora active-cell"><span class="cell-text">Stored on Hugging Face (private, 2FA). <strong>Client-owned IP</strong> — portable.</span></div>
+              <div class="grid-cell cell-lora active-cell" data-modal="lora-train"><span class="cell-tag tag-lora">CREATED</span><span class="cell-text">Safetensor file — learned patterns. <strong>Cannot reconstruct source.</strong></span><span class="cell-expand">+</span></div>
+              <div class="grid-cell cell-lora active-cell" data-modal="lora-generate"><span class="cell-text">Applied <strong>locally</strong> to base output. Brand DNA stays on Kartel infra.</span><span class="cell-expand">+</span></div>
+              <div class="grid-cell cell-lora active-cell" data-modal="lora-deliver"><span class="cell-text">Stored on Hugging Face (private, 2FA). <strong>Client-owned IP</strong> — portable.</span><span class="cell-expand">+</span></div>
 
               <!-- Row 3: Generation Input -->
               <div class="grid-label"><span class="label-dot dot-gen"></span><span class="label-text">Generation<br/>Input</span></div>
@@ -172,7 +172,7 @@
               <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
               <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
               <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
-              <div class="grid-cell cell-gen active-cell"><span class="cell-tag tag-gen">SENT TO API</span><span class="cell-text">Prompts &amp; params only. <strong>No client data, no brand assets, no PII.</strong></span></div>
+              <div class="grid-cell cell-gen active-cell" data-modal="gen-generate"><span class="cell-tag tag-gen">SENT TO API</span><span class="cell-text">Prompts &amp; params only. <strong>No client data, no brand assets, no PII.</strong></span><span class="cell-expand">+</span></div>
               <div class="grid-cell cell-empty"><span class="cell-muted">Ephemeral — not retained</span></div>
 
               <!-- Row 4: Client Deliverables -->
@@ -181,8 +181,8 @@
               <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
               <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
               <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
-              <div class="grid-cell cell-del active-cell"><span class="cell-tag tag-del">CREATED</span><span class="cell-text">Brand-accurate outputs. Full metadata audit trail.</span></div>
-              <div class="grid-cell cell-del active-cell"><span class="cell-text">Sent to client via CIP, S3, Frame.io, or Drive. <strong>100% client-owned IP.</strong></span></div>
+              <div class="grid-cell cell-del active-cell" data-modal="del-generate"><span class="cell-tag tag-del">CREATED</span><span class="cell-text">Brand-accurate outputs. Full metadata audit trail.</span><span class="cell-expand">+</span></div>
+              <div class="grid-cell cell-del active-cell" data-modal="del-deliver"><span class="cell-text">Sent to client via CIP, S3, Frame.io, or Drive. <strong>100% client-owned IP.</strong></span><span class="cell-expand">+</span></div>
 
               <!-- Row 5: Performance Insights -->
               <div class="grid-label"><span class="label-dot dot-perf"></span><span class="label-text">Performance<br/>Insights</span></div>
@@ -190,8 +190,8 @@
               <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
               <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
               <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
-              <div class="grid-cell cell-perf active-cell"><span class="cell-tag tag-perf">INGESTED</span><span class="cell-text">3rd-party performance data (e.g. VidMob) informs generation parameters</span></div>
-              <div class="grid-cell cell-perf active-cell"><span class="cell-tag tag-perf">FEEDBACK</span><span class="cell-text">Output performance data loops back to refine future generation</span></div>
+              <div class="grid-cell cell-perf active-cell" data-modal="perf-generate"><span class="cell-tag tag-perf">INGESTED</span><span class="cell-text">3rd-party performance data (e.g. VidMob) informs generation parameters</span><span class="cell-expand">+</span></div>
+              <div class="grid-cell cell-perf active-cell" data-modal="perf-deliver"><span class="cell-tag tag-perf">FEEDBACK</span><span class="cell-text">Output performance data loops back to refine future generation</span><span class="cell-expand">+</span></div>
             </div>
           </div>
         </div>
@@ -546,6 +546,22 @@
         <div class="footer-sub">This document is proprietary. Unauthorized distribution is prohibited.</div>
       </div>
     </footer>
+
+    <!-- ═══════════ MODAL ═══════════ -->
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal">
+        <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-header">
+          <span class="modal-badge" id="modal-badge"></span>
+          <span class="modal-phase" id="modal-phase"></span>
+        </div>
+        <h3 class="modal-title" id="modal-title"></h3>
+        <div class="modal-body" id="modal-body"></div>
+        <div class="modal-footer">
+          <a href="./framework.html" class="modal-deepdive-link">View Full Deep Dive Framework &rarr;</a>
+        </div>
+      </div>
+    </div>
 
     <script type="module" src="/src/main.ts"></script>
   </body>
