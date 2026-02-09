@@ -504,6 +504,53 @@ body {
 }
 
 
+/* ── Security Callout ── */
+.hp-security-callout {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  margin-top: 2rem;
+  padding: 1.75rem 2.5rem;
+  background: var(--hp-white);
+  border: 1px solid var(--hp-border);
+  border-left: 3px solid var(--hp-text-primary);
+  border-radius: 4px;
+}
+
+.hp-security-callout-icon {
+  flex-shrink: 0;
+  color: var(--hp-text-primary);
+  margin-top: 2px;
+}
+
+.hp-security-callout-content p {
+  font-family: var(--hp-sans);
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--hp-text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.hp-security-callout-content p strong {
+  font-weight: 500;
+  color: var(--hp-text-primary);
+}
+
+.hp-security-callout-link {
+  font-family: var(--hp-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--hp-text-primary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.hp-security-callout-link:hover {
+  opacity: 0.7;
+}
+
+
 /* ═══════════════════════════════════════════════════
    PROOF
    ═══════════════════════════════════════════════════ */
