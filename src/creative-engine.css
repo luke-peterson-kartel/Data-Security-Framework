@@ -297,6 +297,11 @@
   color: var(--color-lora);
 }
 
+.loop-tag--amber {
+  background: var(--color-gen-dim);
+  color: var(--color-gen);
+}
+
 /* ─── Comparison table ─── */
 .cmp-table-wrapper {
   overflow-x: auto;
