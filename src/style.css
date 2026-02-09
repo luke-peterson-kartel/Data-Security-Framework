@@ -838,6 +838,91 @@ strong {
   animation: dash-flow 1s linear infinite;
 }
 
+.feedback-node--clickable {
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: var(--radius-md);
+}
+
+.feedback-node--clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.06);
+}
+
+.feedback-node--clickable:hover .cell-expand {
+  opacity: 1;
+}
+
+.feedback-node--clickable .cell-expand {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+
+.feedback-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+}
+
+.feedback-step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.feedback-step:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(236, 72, 153, 0.08);
+  border-color: rgba(236, 72, 153, 0.25);
+}
+
+.feedback-step:hover .cell-expand {
+  opacity: 1;
+}
+
+.feedback-step .cell-expand {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+
+.feedback-step-num {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  background: rgba(236, 72, 153, 0.12);
+  border: 1px solid rgba(236, 72, 153, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-perf);
+  margin-top: 2px;
+}
+
+.feedback-step-content {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding-right: var(--space-md);
+}
+
+.feedback-step-content strong {
+  color: var(--text-primary);
+}
+
 .feedback-description p {
   font-size: 13px;
   color: var(--text-secondary);
@@ -1262,6 +1347,10 @@ strong {
   .pipeline-step {
     min-width: 140px;
   }
+
+  .feedback-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Mobile */
@@ -1301,6 +1390,10 @@ strong {
 
   .feedback-arrow {
     transform: rotate(90deg);
+  }
+
+  .feedback-steps {
+    grid-template-columns: 1fr;
   }
 
   .section {

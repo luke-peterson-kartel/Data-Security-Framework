@@ -376,6 +376,78 @@ const MODAL_DATA: Record<string, ModalContent> = {
       <div class="modal-callout"><strong>Sourced from brand's existing vendors:</strong> This data comes from third-party analytics platforms the brand already uses (e.g. VidMob, Meta Ads Manager data). Kartel does not collect this data independently.</div>
     `,
   },
+
+  'fb-deliver': {
+    dataType: 'Feedback Loop',
+    badgeClass: 'badge-perf',
+    phase: 'PHASE 06 — DELIVER',
+    title: 'Asset Delivery & Output to Client',
+    body: `
+      <p>Deliverables are submitted to clients through their preferred method. All delivery channels maintain security and traceability.</p>
+      <table class="modal-table">
+        <thead><tr><th>Delivery Method</th><th>Description</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>CIP Platform (Recommended)</strong></td><td>Client logs into CIP Frontend to review, approve, and download deliverables from their Asset Library</td><td>Full audit trail of views, downloads, and approvals. Most comprehensive tracking.</td></tr>
+          <tr><td><strong>AWS S3 Delivery</strong></td><td>Assets delivered to a secure S3 bucket for client pickup. Recommended for RED CODE deliverables.</td><td>SOC 2 compliant; encrypted transfer</td></tr>
+          <tr><td><strong>Frame.io</strong></td><td>Secure review and approval platform commonly used in media production</td><td>Industry-standard for creative review</td></tr>
+          <tr><td><strong>WeTransfer / Figma</strong></td><td>Secure third-party transfer platforms based on client preference</td><td>Encryption in transit</td></tr>
+          <tr><td><strong>Google Drive</strong></td><td>Shared folder delivery to client Google Workspace</td><td>2FA; access controls</td></tr>
+        </tbody>
+      </table>
+      <p>Once deliverables are distributed by the client, performance data begins flowing back from the brand's analytics vendors into the Generate phase, creating a continuous optimization loop.</p>
+      <div class="modal-callout"><strong>Data destruction note:</strong> Raw training data is destroyed per NIST 800-88 with written certification to client. The LoRA model is retained on Hugging Face (or locally for RED CODE) as client-owned IP and remains portable. Performance insights are retained as operational data to support the ongoing feedback loop.</div>
+    `,
+  },
+
+  'fb-generate': {
+    dataType: 'Feedback Loop',
+    badgeClass: 'badge-perf',
+    phase: 'PHASE 05 — GENERATE',
+    title: 'Insight-Driven Content Generation',
+    body: `
+      <p>Content generation occurs within the Internal Production Platform (IPP). When performance insights are available, they inform the generation parameters — enabling content that reflects real audience behavior and preferences.</p>
+      <table class="modal-table">
+        <thead><tr><th>Component</th><th>Function</th><th>Security</th></tr></thead>
+        <tbody>
+          <tr><td><strong>IPP</strong></td><td>Internal production platform where all client content creation and generations occur.</td><td>2FA Google authentication; logged and gated access; Kartel employees and approved contractors only</td></tr>
+          <tr><td><strong>FAL (API Gateway)</strong></td><td>Enterprise-grade vendor providing API access to third-party generation models. Client data is NOT sent through FAL.</td><td>SOC 2 Type II compliant; private account with security authentication keys; no client data exposure</td></tr>
+          <tr><td><strong>Generation Platform (GP)</strong></td><td>AI content generation engine embedded within IPP. Executes workflows, accesses LoRA models, creates assets.</td><td>Inherits IPP access controls; runs within IPP environment</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Performance Insights in Generation:</strong></p>
+      <p>In addition to the core generation inputs (prompts + LoRA model), the generation step can be informed by Performance Insights — aggregated creative performance data from third-party vendors (e.g. VidMob) that the brand already works with. This data informs generation parameters, enabling insight-driven content creation.</p>
+    `,
+  },
+
+  'fb-loop-cycle': {
+    dataType: 'Feedback Loop',
+    badgeClass: 'badge-perf',
+    phase: 'CONTINUOUS OPTIMIZATION',
+    title: 'The Performance Feedback Loop Cycle',
+    body: `
+      <p>The performance feedback loop is what makes the creative engine adaptive, not just generative. It creates a continuous optimization cycle between Deliver and Generate.</p>
+      <p><strong>The Full Cycle:</strong></p>
+      <ul class="modal-list">
+        <li><strong>Generate:</strong> Creative content is produced using the trained LoRA model + performance insight parameters</li>
+        <li><strong>Deliver:</strong> Approved assets are sent to the client and distributed across media channels</li>
+        <li><strong>Perform:</strong> Content runs in market across platforms (Instagram, TikTok, YouTube, programmatic, etc.)</li>
+        <li><strong>Measure:</strong> Brand's analytics vendor (VidMob, etc.) captures creative performance data</li>
+        <li><strong>Feed Back:</strong> Performance data is ingested back into the Generate phase as updated insight parameters</li>
+        <li><strong>Refine:</strong> Next generation cycle uses updated insights to produce better-performing content</li>
+      </ul>
+      <p>This cycle repeats continuously, with each round of content creating data that improves the next.</p>
+      <table class="modal-table">
+        <thead><tr><th>Attribute</th><th>Performance Insights</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Sensitivity Level</strong></td><td>LOW — Aggregated performance metrics, not core brand assets, source imagery, or PII.</td></tr>
+          <tr><td><strong>Source</strong></td><td>Third-party analytics vendors the brand already works with (e.g. VidMob, Meta Ads Manager). Kartel does not collect this data independently.</td></tr>
+          <tr><td><strong>Contains Client Data?</strong></td><td>No core brand assets, no PII, no proprietary creative materials. Contains aggregated metrics about how creative content performs in market.</td></tr>
+          <tr><td><strong>Retention</strong></td><td>Retained as operational data to support the ongoing feedback loop. Not subject to NIST 800-88 destruction (not source data).</td></tr>
+        </tbody>
+      </table>
+      <div class="modal-callout"><strong>Key principle:</strong> Performance insights are actionable in generation — once the brand's creative intelligence engine is built (LoRA model trained), performance insights become parameters that guide what to generate, enabling hyper-targeted content that reflects real audience behavior.</div>
+    `,
+  },
 };
 
 function initModal(): void {

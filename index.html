@@ -440,10 +440,11 @@
           </div>
           <div class="feedback-card" data-animate>
             <div class="feedback-flow">
-              <div class="feedback-node">
+              <div class="feedback-node feedback-node--clickable" data-modal="fb-deliver">
                 <span class="feedback-node-num">06</span>
                 <span class="feedback-node-name">Deliver</span>
                 <span class="feedback-node-desc">Outputs distributed to market</span>
+                <span class="cell-expand">+</span>
               </div>
               <div class="feedback-arrow">
                 <svg width="160" height="60" viewBox="0 0 160 60">
@@ -457,14 +458,56 @@
                   <text x="80" y="56" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#8b5cf6" font-weight="600">OPTIMIZED OUTPUT</text>
                 </svg>
               </div>
-              <div class="feedback-node">
+              <div class="feedback-node feedback-node--clickable" data-modal="fb-generate">
                 <span class="feedback-node-num">05</span>
                 <span class="feedback-node-name">Generate</span>
                 <span class="feedback-node-desc">Insight-driven content creation</span>
+                <span class="cell-expand">+</span>
               </div>
             </div>
-            <div class="feedback-description">
-              <p>Once the creative engine is live, distributed media performance data (from VidMob or similar 3rd-party vendors the brand works with) feeds into the generation step — enabling customized, insight-driven content. Output performance data from Deliver cycles back to Generate, creating a continuous optimization loop.</p>
+            <div class="feedback-steps">
+              <div class="feedback-step" data-modal="fb-loop-cycle">
+                <span class="feedback-step-num">1</span>
+                <div class="feedback-step-content">
+                  <strong>Generate</strong> — Creative content produced using trained LoRA model + performance insight parameters
+                </div>
+                <span class="cell-expand">+</span>
+              </div>
+              <div class="feedback-step" data-modal="fb-loop-cycle">
+                <span class="feedback-step-num">2</span>
+                <div class="feedback-step-content">
+                  <strong>Deliver</strong> — Approved assets sent to client and distributed across media channels
+                </div>
+                <span class="cell-expand">+</span>
+              </div>
+              <div class="feedback-step" data-modal="fb-loop-cycle">
+                <span class="feedback-step-num">3</span>
+                <div class="feedback-step-content">
+                  <strong>Perform</strong> — Content runs in market across platforms (Instagram, TikTok, YouTube, etc.)
+                </div>
+                <span class="cell-expand">+</span>
+              </div>
+              <div class="feedback-step" data-modal="fb-loop-cycle">
+                <span class="feedback-step-num">4</span>
+                <div class="feedback-step-content">
+                  <strong>Measure</strong> — Brand's analytics vendor (VidMob, etc.) captures creative performance data
+                </div>
+                <span class="cell-expand">+</span>
+              </div>
+              <div class="feedback-step" data-modal="fb-loop-cycle">
+                <span class="feedback-step-num">5</span>
+                <div class="feedback-step-content">
+                  <strong>Feed Back</strong> — Performance data ingested back into Generate as updated insight parameters
+                </div>
+                <span class="cell-expand">+</span>
+              </div>
+              <div class="feedback-step" data-modal="fb-loop-cycle">
+                <span class="feedback-step-num">6</span>
+                <div class="feedback-step-content">
+                  <strong>Refine</strong> — Next generation cycle uses updated insights to produce better-performing content
+                </div>
+                <span class="cell-expand">+</span>
+              </div>
             </div>
           </div>
         </div>
