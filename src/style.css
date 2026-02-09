@@ -256,6 +256,16 @@ strong {
   background: rgba(139, 92, 246, 0.15);
 }
 
+.nav-link-cta--blue {
+  background: var(--color-raw-dim);
+  border-color: var(--color-raw-border);
+  color: var(--color-raw) !important;
+}
+
+.nav-link-cta--blue:hover {
+  background: rgba(59, 130, 246, 0.15);
+}
+
 
 /* ═══════════════════════════════════════════════════
    HERO

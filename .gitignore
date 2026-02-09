@@ -4,3 +4,5 @@ dist
 *.local
 Kartel_Framework_v3_extracted.txt
 /KARTEL*.png
+/creative-engine-positioning.html
+.vercel

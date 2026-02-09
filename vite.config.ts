@@ -7,6 +7,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         framework: resolve(__dirname, 'framework.html'),
+        creative: resolve(__dirname, 'creative-engine.html'),
       },
     },
   },
