@@ -3,3 +3,4 @@ dist
 .DS_Store
 *.local
 Kartel_Framework_v3_extracted.txt
+/KARTEL*.png
