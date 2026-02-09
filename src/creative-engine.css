@@ -31,6 +31,15 @@
   color: var(--color-del);
 }
 
+.stat-number--infinity {
+  font-size: 64px;
+  line-height: 0.8;
+}
+
+.hero-meta--spaced {
+  margin-bottom: var(--space-xl);
+}
+
 /* ─── Alternating section backgrounds ─── */
 .ce-section--alt {
   background: var(--bg-secondary);
