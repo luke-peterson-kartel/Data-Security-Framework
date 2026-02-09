@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kartel AI — Data Security Framework</title>
+    <meta name="description" content="Kartel AI's enterprise data security framework — how client data moves through our AI pipeline with protection at every phase." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="./images/kartel-icon.png" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+
+    <!-- ═══════════ NAVIGATION ═══════════ -->
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <div class="nav-brand">
+          <a href="./" class="nav-brand-link">
+            <img src="./images/kartel-logo-white.png" alt="Kartel AI" class="nav-logo-img" />
+          </a>
+        </div>
+        <div class="nav-links">
+          <a href="./" class="nav-link">Home</a>
+          <a href="#pipeline" class="nav-link" data-section="pipeline">Pipeline</a>
+          <a href="#data-flow" class="nav-link" data-section="data-flow">Data Flow</a>
+          <a href="#security" class="nav-link" data-section="security">Security</a>
+          <a href="#feedback" class="nav-link" data-section="feedback">Feedback</a>
+          <a href="./framework.html" class="nav-link nav-link-cta">Deep Dive</a>
+          <a href="./creative-engine.html" class="nav-link nav-link-cta nav-link-cta--blue">Creative Engine</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+
+      <!-- ═══════════ HERO ═══════════ -->
+      <section class="section hero" id="hero">
+        <div class="container">
+          <div class="hero-eyebrow">
+            <span class="eyebrow-tag">KARTEL AI — DATA SECURITY</span>
+          </div>
+          <h1 class="hero-title">Your Data, <span class="gradient-text">Fortified.</span></h1>
+          <p class="hero-subtitle">A complete security framework showing how client data moves through our AI pipeline — from ingest to delivery — with enterprise-grade protection at every phase.</p>
+          <div class="hero-stats">
+            <div class="stat-item" data-animate>
+              <span class="stat-number">6</span>
+              <span class="stat-label">Pipeline Phases</span>
+            </div>
+            <div class="stat-item" data-animate>
+              <span class="stat-number">5</span>
+              <span class="stat-label">Data Types Tracked</span>
+            </div>
+            <div class="stat-item" data-animate>
+              <span class="stat-number">0</span>
+              <span class="stat-label">Client Data to APIs</span>
+            </div>
+          </div>
+          <div class="hero-cta-group">
+            <a href="#pipeline" class="hero-cta">Explore the Framework</a>
+            <a href="./framework.html" class="hero-cta hero-cta-outline">Deep Dive Framework</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ PIPELINE ═══════════ -->
+      <section class="section pipeline" id="pipeline">
+        <div class="container">
+          <div class="section-header" data-animate>
+            <span class="section-eyebrow">THE PIPELINE</span>
+            <h2 class="section-title">Six Phases. Complete Control.</h2>
+            <p class="section-subtitle">Every piece of client data follows a strict, auditable path through our infrastructure.</p>
+          </div>
+          <div class="pipeline-flow" data-animate>
+            <div class="pipeline-step">
+              <div class="step-number">01</div>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+              <div class="step-name">Ingest</div>
+              <div class="step-desc">Client provides brand assets via secure channels</div>
+            </div>
+            <div class="pipeline-connector"><div class="connector-line"></div></div>
+            <div class="pipeline-step">
+              <div class="step-number">02</div>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              </div>
+              <div class="step-name">Store</div>
+              <div class="step-desc">Siloed storage on internal NAS &amp; locked safe</div>
+            </div>
+            <div class="pipeline-connector"><div class="connector-line"></div></div>
+            <div class="pipeline-step">
+              <div class="step-number">03</div>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+              </div>
+              <div class="step-name">Access</div>
+              <div class="step-desc">Least-privilege controls, full audit logging</div>
+            </div>
+            <div class="pipeline-connector"><div class="connector-line"></div></div>
+            <div class="pipeline-step">
+              <div class="step-number">04</div>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+              </div>
+              <div class="step-name">Train</div>
+              <div class="step-desc">LoRA model created on local GPUs. Raw data consumed.</div>
+            </div>
+            <div class="pipeline-connector"><div class="connector-line"></div></div>
+            <div class="pipeline-step">
+              <div class="step-number">05</div>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+              <div class="step-name">Generate</div>
+              <div class="step-desc">AI creates outputs. No client data touches APIs.</div>
+            </div>
+            <div class="pipeline-connector"><div class="connector-line"></div></div>
+            <div class="pipeline-step">
+              <div class="step-number">06</div>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </div>
+              <div class="step-name">Deliver</div>
+              <div class="step-desc">100% client-owned IP delivered securely</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ DATA FLOW GRID ═══════════ -->
+      <section class="section data-flow" id="data-flow">
+        <div class="container">
+          <div class="section-header" data-animate>
+            <span class="section-eyebrow">DATA FLOW MATRIX</span>
+            <h2 class="section-title">Five Data Types, Six Phases</h2>
+            <p class="section-subtitle">Where each data type is created, present, and protected throughout the pipeline</p>
+          </div>
+
+          <div class="flow-grid-wrapper" data-animate>
+            <div class="flow-grid">
+              <!-- Header row -->
+              <div class="grid-corner"><span>Data Type</span></div>
+              <div class="grid-phase"><span class="phase-num">01</span><span class="phase-name">Ingest</span></div>
+              <div class="grid-phase"><span class="phase-num">02</span><span class="phase-name">Store</span></div>
+              <div class="grid-phase"><span class="phase-num">03</span><span class="phase-name">Access</span></div>
+              <div class="grid-phase"><span class="phase-num">04</span><span class="phase-name">Train</span></div>
+              <div class="grid-phase"><span class="phase-num">05</span><span class="phase-name">Generate</span></div>
+              <div class="grid-phase"><span class="phase-num">06</span><span class="phase-name">Deliver</span></div>
+
+              <!-- Row 1: Raw Training Data -->
+              <div class="grid-label"><span class="label-dot dot-raw"></span><span class="label-text">Raw Training<br/>Data</span></div>
+              <div class="grid-cell cell-raw active-cell" data-modal="raw-ingest"><span class="cell-tag tag-raw">ENTERS</span><span class="cell-text">Client provides brand assets via S3, Drive, CIP, or hard drive</span><span class="cell-expand">+</span></div>
+              <div class="grid-cell cell-raw active-cell" data-modal="raw-store"><span class="cell-text">Internal NAS &amp; locked safe. <strong>Siloed per client</strong> — never commingled.</span><span class="cell-expand">+</span></div>
+              <div class="grid-cell cell-raw active-cell" data-modal="raw-access"><span class="cell-text">Authorized team downloads for training prep. <strong>Least privilege</strong> access.</span><span class="cell-expand">+</span></div>
+              <div class="grid-cell cell-raw active-cell" data-modal="raw-train"><span class="cell-text"><strong>Consumed</strong> by training process on local GPUs (or RunPod if approved)</span><span class="cell-expand">+</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">Not present — consumed in Train</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">Destroyed per NIST 800-88</span></div>
+
+              <!-- Row 2: LoRA Model -->
+              <div class="grid-label"><span class="label-dot dot-lora"></span><span class="label-text">LoRA Model</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
+              <div class="grid-cell cell-lora active-cell" data-modal="lora-train"><span class="cell-tag tag-lora">CREATED</span><span class="cell-text">Safetensor file — learned patterns. <strong>Cannot reconstruct source.</strong></span><span class="cell-expand">+</span></div>
+              <div class="grid-cell cell-lora active-cell" data-modal="lora-generate"><span class="cell-text">Applied <strong>locally</strong> to base output. Brand DNA stays on Kartel infra.</span><span class="cell-expand">+</span></div>
+              <div class="grid-cell cell-lora active-cell" data-modal="lora-deliver"><span class="cell-text">Stored on Hugging Face (private, 2FA). <strong>Client-owned IP</strong> — portable.</span><span class="cell-expand">+</span></div>
+
+              <!-- Row 3: Generation Input -->
+              <div class="grid-label"><span class="label-dot dot-gen"></span><span class="label-text">Generation<br/>Input</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
+              <div class="grid-cell cell-gen active-cell" data-modal="gen-generate"><span class="cell-tag tag-gen">SENT TO API</span><span class="cell-text">Prompts &amp; params only. <strong>No client data, no brand assets, no PII.</strong></span><span class="cell-expand">+</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">Ephemeral — not retained</span></div>
+
+              <!-- Row 4: Client Deliverables -->
+              <div class="grid-label"><span class="label-dot dot-del"></span><span class="label-text">Client<br/>Deliverables</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
+              <div class="grid-cell cell-del active-cell" data-modal="del-generate"><span class="cell-tag tag-del">CREATED</span><span class="cell-text">Brand-accurate outputs. Full metadata audit trail.</span><span class="cell-expand">+</span></div>
+              <div class="grid-cell cell-del active-cell" data-modal="del-deliver"><span class="cell-text">Sent to client via CIP, S3, Frame.io, or Drive. <strong>100% client-owned IP.</strong></span><span class="cell-expand">+</span></div>
+
+              <!-- Row 5: Performance Insights -->
+              <div class="grid-label"><span class="label-dot dot-perf"></span><span class="label-text">Performance<br/>Insights</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
+              <div class="grid-cell cell-empty"><span class="cell-muted">—</span></div>
+              <div class="grid-cell cell-perf active-cell" data-modal="perf-generate"><span class="cell-tag tag-perf">INGESTED</span><span class="cell-text">3rd-party performance data (e.g. VidMob) informs generation parameters</span><span class="cell-expand">+</span></div>
+              <div class="grid-cell cell-perf active-cell" data-modal="perf-deliver"><span class="cell-tag tag-perf">FEEDBACK</span><span class="cell-text">Output performance data loops back to refine future generation</span><span class="cell-expand">+</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ SECURITY CONTROLS ═══════════ -->
+      <section class="section security" id="security">
+        <div class="container">
+          <div class="section-header" data-animate>
+            <span class="section-eyebrow">SECURITY CONTROLS</span>
+            <h2 class="section-title">Protection at Every Phase</h2>
+            <p class="section-subtitle">Systems, vendors, compliance status, and protections at each stage</p>
+          </div>
+
+          <div class="security-grid">
+
+            <!-- 01 INGEST -->
+            <div class="sec-card" data-animate>
+              <div class="sec-card-header">
+                <span class="sec-card-num">01</span>
+                <span class="sec-card-title">Ingest</span>
+              </div>
+              <div class="sec-card-body">
+                <div class="sec-field">
+                  <div class="sec-field-label">Systems / Vendors</div>
+                  <div class="sec-vendor-list">
+                    <span class="vendor-badge vendor-soc2">&#10003; AWS S3 — SOC 2</span>
+                    <span class="vendor-badge vendor-soc2">&#10003; Google Drive</span>
+                    <span class="vendor-badge vendor-standard">CIP Platform</span>
+                    <span class="vendor-badge vendor-standard">Physical media</span>
+                    <span class="vendor-badge vendor-standard">SharePoint / Dropbox</span>
+                  </div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Access Controls</div>
+                  <div class="sec-field-value">2FA on all digital intake methods. Physical drives logged with chain-of-custody tracking. CIP uploads require authenticated client login.</div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Encryption</div>
+                  <div class="sec-field-value">AES-256 at rest, TLS 1.3 in transit (S3). Google Drive encrypted by default. Physical drives stored in locked safe on arrival.</div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">RED CODE Protocol</div>
+                  <div class="sec-redcode-badges">
+                    <span class="redcode-badge">S3 or physical media only</span>
+                    <span class="redcode-badge">No CIP / Drive / SharePoint</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 02 STORE -->
+            <div class="sec-card" data-animate>
+              <div class="sec-card-header">
+                <span class="sec-card-num">02</span>
+                <span class="sec-card-title">Store</span>
+              </div>
+              <div class="sec-card-body">
+                <div class="sec-field">
+                  <div class="sec-field-label">Systems / Vendors</div>
+                  <div class="sec-vendor-list">
+                    <span class="vendor-badge vendor-standard">Internal NAS</span>
+                    <span class="vendor-badge vendor-standard">Locked safe (drives)</span>
+                    <span class="vendor-badge vendor-soc2">&#10003; CIP DAM — AWS</span>
+                    <span class="vendor-badge vendor-soc2">&#10003; AWS S3 (RED CODE)</span>
+                  </div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Data Isolation</div>
+                  <div class="sec-field-value"><strong>Siloed per client</strong> — separate NAS directories, separate S3 buckets. No data commingling across clients, ever.</div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Physical Security</div>
+                  <div class="sec-field-value">407 Maple Drive, Beverly Hills. Keycard + biometric access. 24/7 video surveillance. Locked server cabinets. Visitor escort policy.</div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">RED CODE Protocol</div>
+                  <div class="sec-redcode-badges">
+                    <span class="redcode-badge">Air-gapped NAS — no internet</span>
+                    <span class="redcode-badge">Network interfaces disabled</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 03 ACCESS -->
+            <div class="sec-card" data-animate>
+              <div class="sec-card-header">
+                <span class="sec-card-num">03</span>
+                <span class="sec-card-title">Access</span>
+              </div>
+              <div class="sec-card-body">
+                <div class="sec-field">
+                  <div class="sec-field-label">Systems / Vendors</div>
+                  <div class="sec-vendor-list">
+                    <span class="vendor-badge vendor-standard">Internal NAS</span>
+                    <span class="vendor-badge vendor-standard">CIP Backend</span>
+                    <span class="vendor-badge vendor-soc2">&#10003; Google Workspace — 2FA</span>
+                  </div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Personnel Controls</div>
+                  <div class="sec-field-value"><strong>Least privilege:</strong> project-scoped access only. Background checks, NDA with non-compete + IP assignment. All access logged with timestamp, user ID, action type.</div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Contractor Vetting</div>
+                  <div class="sec-field-value">W-9 verification &rarr; IPP profile review &rarr; NDA execution &rarr; Google Workspace + 2FA provisioning &rarr; project-scoped IPP access &rarr; activity monitoring &rarr; offboarding revocation</div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Monitoring</div>
+                  <div class="sec-badge-list">
+                    <span class="sec-badge">All file access logged</span>
+                    <span class="sec-badge">Anomalous access alerts</span>
+                    <span class="sec-badge">Same standards: employees &amp; contractors</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 04 TRAIN -->
+            <div class="sec-card" data-animate>
+              <div class="sec-card-header">
+                <span class="sec-card-num">04</span>
+                <span class="sec-card-title">Train</span>
+              </div>
+              <div class="sec-card-body">
+                <div class="sec-field">
+                  <div class="sec-field-label">Systems / Vendors</div>
+                  <div class="sec-vendor-list">
+                    <span class="vendor-badge vendor-standard">Local GPUs (primary)</span>
+                    <span class="vendor-badge vendor-soc2">&#10003; RunPod — SOC 2 Type II</span>
+                    <span class="vendor-badge vendor-soc2">&#10003; Hugging Face — SOC 2</span>
+                  </div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Two-Tier Model</div>
+                  <div class="sec-field-value"><strong>Standard Secure:</strong> Local GPUs primary. RunPod SOC 2 overflow when approved by client. Data may transfer via S3 &rarr; RunPod. Instances ephemeral — wiped on termination.</div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Model Storage</div>
+                  <div class="sec-field-value">Trained LoRA (safetensor) stored on Hugging Face private repo. 2FA + auth keys. Currently Pro plan; Enterprise Hub available for SOC 2 audit trails + SSO.</div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">RED CODE Protocol</div>
+                  <div class="sec-redcode-badges">
+                    <span class="redcode-badge">Local GPUs ONLY — zero cloud</span>
+                    <span class="redcode-badge">Air-gapped — network disabled</span>
+                    <span class="redcode-badge">Encrypted physical media transfer</span>
+                    <span class="redcode-badge">Local-only model storage option</span>
+                  </div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Contract</div>
+                  <div class="sec-field-value">Client selects: <strong>Option A</strong> (Local-Only) or <strong>Option B</strong> (Secure Cloud Overflow Approved)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 05 GENERATE -->
+            <div class="sec-card" data-animate>
+              <div class="sec-card-header">
+                <span class="sec-card-num">05</span>
+                <span class="sec-card-title">Generate</span>
+              </div>
+              <div class="sec-card-body">
+                <div class="sec-field">
+                  <div class="sec-field-label">Systems / Vendors</div>
+                  <div class="sec-vendor-list">
+                    <span class="vendor-badge vendor-standard">IPP / Generation Platform</span>
+                    <span class="vendor-badge vendor-soc2">&#10003; FAL — SOC 2 Type II</span>
+                    <span class="vendor-badge vendor-amber">3rd-party models (Runway, Kling, etc.)</span>
+                    <span class="vendor-badge vendor-amber">VidMob / 3rd-party insights</span>
+                  </div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Critical Architecture</div>
+                  <div class="sec-field-value"><strong>Client data does NOT pass through APIs.</strong> Prompts sent to 3rd-party models via FAL contain no brand assets, source data, or PII. Base result returned &rarr; LoRA model applied <strong>locally</strong> on Kartel infra.</div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Performance Data</div>
+                  <div class="sec-field-value">3rd-party creative intelligence data (e.g. VidMob) ingested to inform generation parameters. <strong>Lower sensitivity</strong> — aggregated performance metrics, not core brand assets. Received via API or secure file transfer from brand's vendor.</div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Controls</div>
+                  <div class="sec-badge-list">
+                    <span class="sec-badge">No client data to APIs</span>
+                    <span class="sec-badge">FAL: private API keys + encrypted comms</span>
+                    <span class="sec-badge">Full metadata audit trail</span>
+                    <span class="sec-badge">2FA gated IPP access</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 06 DELIVER -->
+            <div class="sec-card" data-animate>
+              <div class="sec-card-header">
+                <span class="sec-card-num">06</span>
+                <span class="sec-card-title">Deliver</span>
+              </div>
+              <div class="sec-card-body">
+                <div class="sec-field">
+                  <div class="sec-field-label">Systems / Vendors</div>
+                  <div class="sec-vendor-list">
+                    <span class="vendor-badge vendor-soc2">&#10003; CIP Platform — AWS</span>
+                    <span class="vendor-badge vendor-soc2">&#10003; AWS S3</span>
+                    <span class="vendor-badge vendor-standard">Frame.io</span>
+                    <span class="vendor-badge vendor-standard">Google Drive</span>
+                    <span class="vendor-badge vendor-standard">WeTransfer / Figma</span>
+                  </div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Delivery Controls</div>
+                  <div class="sec-field-value">Client selects preferred delivery method. CIP recommended for built-in approval workflow and audit trail. All transfers encrypted. Client approval required before final release.</div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Performance Feedback</div>
+                  <div class="sec-field-value">Once outputs are distributed, <strong>performance data loops back</strong> from the brand's media analytics vendor (VidMob, etc.) to the Generate phase — creating a continuous optimization cycle.</div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Data Destruction</div>
+                  <div class="sec-badge-list">
+                    <span class="sec-badge">NIST 800-88 secure wipe</span>
+                    <span class="sec-badge">Written certification to client</span>
+                    <span class="sec-badge">LoRA model retained (client-owned)</span>
+                  </div>
+                </div>
+                <div class="sec-field">
+                  <div class="sec-field-label">Ownership</div>
+                  <div class="sec-field-value"><strong>100% client-owned IP.</strong> Deliverables, LoRA models, and generated content are all client property.</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ FEEDBACK LOOP ═══════════ -->
+      <section class="section feedback" id="feedback">
+        <div class="container">
+          <div class="section-header" data-animate>
+            <span class="section-eyebrow">CONTINUOUS OPTIMIZATION</span>
+            <h2 class="section-title">The Performance Feedback Loop</h2>
+            <p class="section-subtitle">Output performance data creates a continuous optimization cycle</p>
+          </div>
+          <div class="feedback-card" data-animate>
+            <div class="feedback-flow">
+              <div class="feedback-node feedback-node--clickable" data-modal="fb-deliver">
+                <span class="feedback-node-num">06</span>
+                <span class="feedback-node-name">Deliver</span>
+                <span class="feedback-node-desc">Outputs distributed to market</span>
+                <span class="cell-expand">+</span>
+              </div>
+              <div class="feedback-arrow">
+                <svg width="160" height="60" viewBox="0 0 160 60">
+                  <path d="M10 30 Q 80 -20 150 30" fill="none" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="6 4"/>
+                  <polygon points="146,24 154,30 146,36" fill="#ec4899"/>
+                  <text x="80" y="8" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#ec4899" font-weight="600">PERFORMANCE DATA</text>
+                </svg>
+                <svg width="160" height="60" viewBox="0 0 160 60">
+                  <path d="M150 30 Q 80 80 10 30" fill="none" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6 4"/>
+                  <polygon points="14,36 6,30 14,24" fill="#8b5cf6"/>
+                  <text x="80" y="56" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#8b5cf6" font-weight="600">OPTIMIZED OUTPUT</text>
+                </svg>
+              </div>
+              <div class="feedback-node feedback-node--clickable" data-modal="fb-generate">
+                <span class="feedback-node-num">05</span>
+                <span class="feedback-node-name">Generate</span>
+                <span class="feedback-node-desc">Insight-driven content creation</span>
+                <span class="cell-expand">+</span>
+              </div>
+            </div>
+            <div class="feedback-steps">
+              <div class="feedback-step" data-modal="fb-loop-cycle">
+                <span class="feedback-step-num">1</span>
+                <div class="feedback-step-content">
+                  <strong>Generate</strong> — Creative content produced using trained LoRA model + performance insight parameters
+                </div>
+                <span class="cell-expand">+</span>
+              </div>
+              <div class="feedback-step" data-modal="fb-loop-cycle">
+                <span class="feedback-step-num">2</span>
+                <div class="feedback-step-content">
+                  <strong>Deliver</strong> — Approved assets sent to client and distributed across media channels
+                </div>
+                <span class="cell-expand">+</span>
+              </div>
+              <div class="feedback-step" data-modal="fb-loop-cycle">
+                <span class="feedback-step-num">3</span>
+                <div class="feedback-step-content">
+                  <strong>Perform</strong> — Content runs in market across platforms (Instagram, TikTok, YouTube, etc.)
+                </div>
+                <span class="cell-expand">+</span>
+              </div>
+              <div class="feedback-step" data-modal="fb-loop-cycle">
+                <span class="feedback-step-num">4</span>
+                <div class="feedback-step-content">
+                  <strong>Measure</strong> — Brand's analytics vendor (VidMob, etc.) captures creative performance data
+                </div>
+                <span class="cell-expand">+</span>
+              </div>
+              <div class="feedback-step" data-modal="fb-loop-cycle">
+                <span class="feedback-step-num">5</span>
+                <div class="feedback-step-content">
+                  <strong>Feed Back</strong> — Performance data ingested back into Generate as updated insight parameters
+                </div>
+                <span class="cell-expand">+</span>
+              </div>
+              <div class="feedback-step" data-modal="fb-loop-cycle">
+                <span class="feedback-step-num">6</span>
+                <div class="feedback-step-content">
+                  <strong>Refine</strong> — Next generation cycle uses updated insights to produce better-performing content
+                </div>
+                <span class="cell-expand">+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-brand">
+          <img src="./images/kartel-logo-white.png" alt="Kartel AI" class="footer-logo-img" />
+        </div>
+        <div class="footer-notice">CONFIDENTIAL &middot; DATA SECURITY FRAMEWORK &middot; FEBRUARY 2026</div>
+        <div class="footer-sub">This document is proprietary. Unauthorized distribution is prohibited.</div>
+      </div>
+    </footer>
+
+    <!-- ═══════════ MODAL ═══════════ -->
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal">
+        <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-header">
+          <span class="modal-badge" id="modal-badge"></span>
+          <span class="modal-phase" id="modal-phase"></span>
+        </div>
+        <h3 class="modal-title" id="modal-title"></h3>
+        <div class="modal-body" id="modal-body"></div>
+        <div class="modal-footer">
+          <a href="./framework.html" class="modal-deepdive-link">View Full Deep Dive Framework &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
